@@ -2,7 +2,7 @@ var React = require('react');
 var PropTypes = React.PropTypes;
 var DragDropContext = require('react-dnd').DragDropContext;
 var HTML5Backend = require('react-dnd-html5-backend');
-var Job = require('./Job');
+import Job from './Job'
 
 
 var jobs = [{name: "ab1",id:32},{name: "ab2",id:21}, {name:"ab3",id:55}];

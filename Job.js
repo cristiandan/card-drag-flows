@@ -1,5 +1,7 @@
-var React = require('react');
-var PropTypes = React.PropTypes;
+import React from 'react'
+import { PropTypes as PropTypes }  from 'react'
+
+
 var DragSource = require('react-dnd').DragSource;
 var ItemTypes = require('./Constants').ItemTypes;
 
@@ -16,17 +18,10 @@ function collect(connect, monitor) {
   }
 }
 
-var Job = React.createClass({
-   propTypes: {
-       name: PropTypes.string.isRequired,
-       id: PropTypes.number.isRequired,
-       connectDragSource: PropTypes.func.isRequired,
-       isDragging: PropTypes.bool.isRequired
-   },
-   render: function () {
-       var name = this.props.name;
-       var id = this.props.id;
-       var connectDragSource = this.props.connectDragSource;
+const Job = ({ name, id, connectDragSource, isDragging}) => {
+       //var name = this.props.name;
+       //var id = this.props.id;
+       //var connectDragSource = this.props.connectDragSource;
        
        return connectDragSource(
         <div style={{
@@ -37,7 +32,14 @@ var Job = React.createClass({
             {id}
         </div>
        );
-   }
-});
+};
 
-module.exports = DragSource(ItemTypes.JOB, jobSource, collect)(Job);
+Job.propTypes = {
+       name: PropTypes.string.isRequired,
+       id: PropTypes.number.isRequired,
+       connectDragSource: PropTypes.func.isRequired,
+       isDragging: PropTypes.bool.isRequired
+   };
+
+
+export default DragSource(ItemTypes.JOB, jobSource, collect)(Job);
