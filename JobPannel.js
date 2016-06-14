@@ -1,5 +1,7 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
+
+import ImmutablePropTypes from 'react-immutable-proptypes'
 import Job from './Job'
 
 // scoate onDrag
@@ -18,10 +20,7 @@ const JobPannel = ({ jobs, onDrag }) => {
 };
 
 JobPannel.propTypes = {
-  jobs: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired
-  }).isRequired).isRequired,
+  jobs: ImmutablePropTypes.list.isRequired,
   onDrag: PropTypes.func.isRequired
 }
 

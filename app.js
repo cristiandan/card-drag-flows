@@ -27,21 +27,21 @@ var rootEl = document.getElementById('root');
 
 
 
-import { addJob } from './actions'
+// import { addJob } from './actions'
 
-// Log the initial state
-console.log(store.getState())
+// // Log the initial state
+// console.log(store.getState())
 
-// Every time the state changes, log it
-// Note that subscribe() returns a function for unregistering the listener
-let unsubscribe = store.subscribe(() =>
-  console.log(store.getState())
-)
+// // Every time the state changes, log it
+// // Note that subscribe() returns a function for unregistering the listener
+// let unsubscribe = store.subscribe(() =>
+//   console.log(store.getState())
+// )
 
-// Dispatch some actions
-store.dispatch(addJob('Learn about actions'))
-store.dispatch(addJob('Learn about reducers'))
-store.dispatch(addJob('Learn about store'))
+// // Dispatch some actions
+// store.dispatch(addJob('Learn about actions'))
+// store.dispatch(addJob('Learn about reducers'))
+// store.dispatch(addJob('Learn about store'))
 
-// Stop listening to state updates
-unsubscribe()
+// // Stop listening to state updates
+// unsubscribe()
