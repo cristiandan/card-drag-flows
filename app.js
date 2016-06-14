@@ -1,5 +1,6 @@
 import { createStore } from 'redux'
 import jobsApp from './reducers'
+import { Provider } from 'react-redux'
 
 var React = require('react');
 var ReactDOM = require('react-dom');
@@ -12,7 +13,9 @@ var rootEl = document.getElementById('root');
 
 //observe(function (knightPosition) {
   ReactDOM.render(
-    <RootPannel />,
+    <Provider store={store}>
+      <RootPannel />
+    </Provider>,
     rootEl
   );
 //});

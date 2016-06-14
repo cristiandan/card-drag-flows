@@ -4,7 +4,6 @@
 
 export const ADD_JOB = 'ADD_JOB'
 export const MOVE_JOB = 'MOVE_JOB'
-export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
 
 
 /*
@@ -17,8 +16,4 @@ export function addJob(job) {
 
 export function moveJob(fromIndex,toIndex) {
   return { type: MOVE_JOB, fromIndex, toIndex }
-}
-
-export function setVisibilityFilter(filter) {
-  return { type: SET_VISIBILITY_FILTER, filter }
 }
