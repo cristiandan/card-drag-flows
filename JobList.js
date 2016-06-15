@@ -5,7 +5,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes'
 import Job from './Job'
 
 // scoate onDrag
-const JobPannel = ({ jobs, onDrag }) => {
+const JobList = ({ jobs, onDrag }) => {
     return (<div style={{
             width: '20%',
             height: '70%',
@@ -19,7 +19,7 @@ const JobPannel = ({ jobs, onDrag }) => {
   </div>)
 };
 
-JobPannel.propTypes = {
+JobList.propTypes = {
   jobs: ImmutablePropTypes.list.isRequired,
   onDrag: PropTypes.func.isRequired
 }
@@ -27,7 +27,7 @@ JobPannel.propTypes = {
 
 // var jobs = [{name: "ab1",id:32},{name: "ab2",id:21}, {name:"ab3",id:55}];
 
-// var JobPannel = React.createClass({
+// var JobList = React.createClass({
 //     propTypes: {
         
 //     },
@@ -56,4 +56,4 @@ JobPannel.propTypes = {
 //     }
 // });
 
-module.exports = JobPannel;
+module.exports = JobList;

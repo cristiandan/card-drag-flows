@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { addJob } from './actions'
-import JobPannel from './JobPannel'
+import JobList from './JobList'
 
 const mapStateToProps = (state) => {
   return {
@@ -19,6 +19,6 @@ const mapDispatchToProps = (dispatch) => {
 const JobContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(JobPannel);
+)(JobList);
 
 export default JobContainer
