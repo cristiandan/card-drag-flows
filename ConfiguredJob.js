@@ -52,7 +52,7 @@ var cardTarget = {
 
     // Time to actually perform the action
     console.log("4");
-    props.moveCard(dragIndex, hoverIndex);
+    props.onMove(dragIndex, hoverIndex);
 
     // Note: we're mutating the monitor item here!
     // Generally it's better to avoid mutations,
@@ -81,7 +81,7 @@ var ConfiguredJob = React.createClass({
        id: PropTypes.number.isRequired,
        connectDragSource: PropTypes.func.isRequired,
        isDragging: PropTypes.bool.isRequired,
-       moveCard: PropTypes.func.isRequired
+       onMove: PropTypes.func.isRequired
     },
     render: function () {
        var name = this.props.name;

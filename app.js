@@ -5,7 +5,6 @@ import { Provider } from 'react-redux'
 var React = require('react');
 var ReactDOM = require('react-dom');
 var RootPannel = require('./RootPannel');
-var observe = require('./Game').observe;
 
 var store = createStore(jobsApp);
 

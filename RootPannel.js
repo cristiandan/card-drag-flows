@@ -1,7 +1,7 @@
 var React = require('react');
 var DragDropContext = require('react-dnd').DragDropContext;
 var HTML5Backend = require('react-dnd-html5-backend');
-var ConfigPannel = require('./ConfigPannel');
+import ConfiguredJobContainer from './ConfiguredJobContainer'
 
 import JobContainer from './JobContainer'
 
@@ -10,7 +10,7 @@ var RootPannel = React.createClass({
         return (
           <div style={{backgroundColor:'red'}}>
             <JobContainer/>
-            <ConfigPannel/>
+            <ConfiguredJobContainer/>
           </div>  
         );
     }

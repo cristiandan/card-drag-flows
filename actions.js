@@ -2,8 +2,9 @@
  * action types
  */
 
+export const ADD_CONFIGURED_JOB = 'ADD_CONFIGURED_JOB'
+export const MOVE_CONFIGURED_JOB = 'MOVE_CONFIGURED_JOB'
 export const ADD_JOB = 'ADD_JOB'
-export const MOVE_JOB = 'MOVE_JOB'
 
 
 /*
@@ -14,6 +15,10 @@ export function addJob(job) {
   return { type: ADD_JOB, job }
 }
 
-export function moveJob(fromIndex,toIndex) {
+export function moveConfiguredJob(fromIndex,toIndex) {
   return { type: MOVE_JOB, fromIndex, toIndex }
+}
+
+export function addConfiguredJob(job) {
+  return { type: ADD_CONFIGURED_JOB, job }
 }

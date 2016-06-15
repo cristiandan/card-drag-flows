@@ -44,7 +44,7 @@ var ConfigPannel = React.createClass({
         canDrop: PropTypes.bool.isRequired
     },
     moveJob: function (dragIndex, hoverIndex) {
-      console.log("move",dragIndex,hoverIndex);
+      console.log("move", dragIndex, hoverIndex);
       
       var jobs = this.state.jobs;
       var dragItem = jobs[dragIndex];
