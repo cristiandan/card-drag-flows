@@ -34,8 +34,8 @@ const ConfigJobList = ({ jobs, onMove, onDrop, connectDropTarget }) => {
             flexWrap: 'wrap',
             backgroundColor: 'yellow'
           }}>
-    {jobs.map(job =>
-      <ConfiguredJob uuid={job.uuid} name={job.name} id={job.id} key={job.uuid} onMove={(dragIndex, hoverIndex) => onMove(dragIndex, hoverIndex)}/>
+    {jobs.map( (job,index) =>
+      <ConfiguredJob uuid={job.uuid} name={job.name} id={job.id} key={job.uuid} index={index} onMove={(dragIndex, hoverIndex) => onMove(dragIndex, hoverIndex)}/>
     )}
   </div>)
 };

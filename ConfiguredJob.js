@@ -78,7 +78,8 @@ var ConfiguredJob = React.createClass({
        connectDragSource: PropTypes.func.isRequired,
        isDragging: PropTypes.bool.isRequired,
        onMove: PropTypes.func.isRequired,
-       uuid: PropTypes.string.isRequired
+       uuid: PropTypes.string.isRequired,
+       index: PropTypes.number.isRequired,
     },
     render: function () {
        var name = this.props.name;

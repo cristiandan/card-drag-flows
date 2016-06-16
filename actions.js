@@ -16,7 +16,7 @@ export function addJob(job) {
 }
 
 export function moveConfiguredJob(fromIndex,toIndex) {
-  return { type: MOVE_JOB, fromIndex, toIndex }
+  return { type: MOVE_CONFIGURED_JOB, fromIndex, toIndex }
 }
 
 export function addConfiguredJob(job) {

@@ -24,7 +24,8 @@ function configuredJobsReducer(state = Immutable.List(), action) {
         const job = Object.assign({},action.job, {uuid: guid()});
         return state.push(job);
       case MOVE_CONFIGURED_JOB:
-        return state; // modify here the move job
+        const selectedJob = state.get(action.fromIndex);  
+        return state.delete(action.fromIndex).insert(action.toIndex,selectedJob);
       default:
         return state;
   }
