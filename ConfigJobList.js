@@ -3,9 +3,31 @@ import ImmutablePropTypes from 'react-immutable-proptypes'
 import ConfiguredJob from './ConfiguredJob'
 import { DropTarget } from 'react-dnd';
 
+var ItemTypes = require('./Constants').ItemTypes;
 
-const ConfigJobList = ({ jobs, onMove, onDrop }) => {
-    return (<div style={{
+var target = {
+    
+  canDrop: function (props,a ,b, c) {
+    return true;
+  },
+
+  drop: function (props, monitor, component) {
+    var item = monitor.getItem();
+    props.onDrop({id: item.id, name: item.name});
+    return { moved: true };
+  }
+};
+
+function collect(connect, monitor) {
+  return {
+    connectDropTarget: connect.dropTarget(),
+    isOver: monitor.isOver(),
+    canDrop: monitor.canDrop()
+  };
+};
+
+const ConfigJobList = ({ jobs, onMove, onDrop, connectDropTarget }) => {
+    return connectDropTarget(<div style={{
             width: '20%',
             height: '70%',
             display: 'flex',
@@ -24,4 +46,4 @@ ConfigJobList.propTypes = {
   onDrop: PropTypes.func.isRequired
 }
 
-module.exports = ConfigJobList;
+module.exports = DropTarget(ItemTypes.JOB, target, collect)(ConfigJobList);

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { addJob, moveConfiguredJob } from './actions'
+import { addConfiguredJob, moveConfiguredJob } from './actions'
 import ConfigJobList from './ConfigJobList'
 
 const mapStateToProps = (state) => {
@@ -12,6 +12,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onMove: (dragIndex, hoverIndex) => {
       dispatch(moveConfiguredJob(dragIndex, hoverIndex))
+    },
+    onDrop: (job) => {
+      dispatch(addConfiguredJob(job))
     }
   }
 }
