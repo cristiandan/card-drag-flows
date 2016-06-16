@@ -7,7 +7,7 @@ var findDOMNode = require('react-dom').findDOMNode;
 
 var jobSource = {
   beginDrag: function (props) {
-    return {name: props.name, id: props.id, key:props.key, index: props.index};
+    return {name: props.name, id: props.id, uuid:props.uuid, index: props.index};
   }
 };
 
