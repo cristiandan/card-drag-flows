@@ -21,12 +21,23 @@ function jobsReducer(state = Immutable.List(jobsList), action) {
 function configuredJobsReducer(state = Immutable.List(), action) {
     switch(action.type) {
       case ADD_CONFIGURED_JOB:
-        return state.push(action.job);
+        const job = Object.assign({},action.job, {uuid: guid()});
+        return state.push(job);
       case MOVE_CONFIGURED_JOB:
         return state; // modify here the move job
       default:
         return state;
   }
+}
+
+function guid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+    s4() + '-' + s4() + s4() + s4();
 }
 
 export default jobsApp

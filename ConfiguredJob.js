@@ -18,7 +18,6 @@ var cardTarget = {
 
     // Don't replace items with themselves
     if (dragIndex === hoverIndex) {
-      console.log("1",dragIndex,hoverIndex);
       return;
     }
 
@@ -40,18 +39,15 @@ var cardTarget = {
 
     // Dragging downwards
     if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
-      console.log("2");
       return;
     }
 
     // Dragging upwards
     if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
-      console.log("3");
       return;
     }
 
     // Time to actually perform the action
-    console.log("4");
     props.onMove(dragIndex, hoverIndex);
 
     // Note: we're mutating the monitor item here!
@@ -81,7 +77,8 @@ var ConfiguredJob = React.createClass({
        id: PropTypes.number.isRequired,
        connectDragSource: PropTypes.func.isRequired,
        isDragging: PropTypes.bool.isRequired,
-       onMove: PropTypes.func.isRequired
+       onMove: PropTypes.func.isRequired,
+       uuid: PropTypes.string.isRequired
     },
     render: function () {
        var name = this.props.name;
@@ -93,8 +90,8 @@ var ConfiguredJob = React.createClass({
        return connectDragSource(connectDropTarget(
            <div style={{
                 position: 'relative',
-                width: '30px',
-                height: '30px',
+                width: '100%',
+                height: '10px',
                 opacity
             }}>
                 {name}
