@@ -1,6 +1,6 @@
-var React = require('react');
-var DragDropContext = require('react-dnd').DragDropContext;
-var HTML5Backend = require('react-dnd-html5-backend');
+import React from 'react'
+import { DragDropContext } from 'react-dnd'
+import HTML5Backend from 'react-dnd-html5-backend'
 import ConfiguredJobContainer from './ConfiguredJobContainer'
 
 import JobContainer from './JobContainer'
@@ -17,4 +17,4 @@ var RootPannel = React.createClass({
 });
 
 
-module.exports = DragDropContext(HTML5Backend)(RootPannel);
+export default DragDropContext(HTML5Backend)(RootPannel)

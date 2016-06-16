@@ -3,7 +3,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes'
 import ConfiguredJob from './ConfiguredJob'
 import { DropTarget } from 'react-dnd';
 
-var ItemTypes = require('./Constants').ItemTypes;
+import * as ItemTypes from './Constants'
 
 var target = {
     

@@ -2,7 +2,7 @@ var React = require('react');
 var PropTypes = React.PropTypes;
 var DragSource = require('react-dnd').DragSource;
 var DropTarget = require('react-dnd').DropTarget;
-var ItemTypes = require('./Constants').ItemTypes;
+import * as ItemTypes from './Constants'
 var findDOMNode = require('react-dom').findDOMNode;
 
 var jobSource = {
@@ -102,4 +102,4 @@ var ConfiguredJob = React.createClass({
     }
 });
 
-module.exports = DragSource(ItemTypes.CONFIGUREDJOB, jobSource, collect)(DropTarget(ItemTypes.CONFIGUREDJOB,cardTarget, collectTarget)(ConfiguredJob));
+module.exports = DragSource(ItemTypes.CONFIGURED_JOB, jobSource, collect)(DropTarget(ItemTypes.CONFIGURED_JOB,cardTarget, collectTarget)(ConfiguredJob));

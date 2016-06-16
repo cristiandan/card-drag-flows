@@ -2,9 +2,9 @@ import { createStore } from 'redux'
 import jobsApp from './reducers'
 import { Provider } from 'react-redux'
 
-var React = require('react');
-var ReactDOM = require('react-dom');
-var RootPannel = require('./RootPannel');
+import React from 'react'
+import ReactDOM from 'react-dom'
+import RootPannel from './RootPannel'
 
 var store = createStore(jobsApp);
 

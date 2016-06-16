@@ -1,5 +1,3 @@
-exports.ItemTypes = {
-  KNIGHT: 'knight',
-  JOB: 'job',
-  CONFIGUREDJOB: 'configuredjob'
-};
+
+export const JOB = 'job'
+export const CONFIGURED_JOB = 'configuredjob'

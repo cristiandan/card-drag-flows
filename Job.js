@@ -3,7 +3,7 @@ import { PropTypes as PropTypes }  from 'react'
 
 
 var DragSource = require('react-dnd').DragSource;
-var ItemTypes = require('./Constants').ItemTypes;
+import * as ItemTypes from './Constants'
 
 var jobSource = {
   beginDrag: function (props) {

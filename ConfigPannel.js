@@ -2,7 +2,7 @@ var React = require('react');
 var PropTypes = React.PropTypes;
 var addConfiguredJob = require('./Observer').addConfiguredJob;
 var setObserver = require('./Observer').setObserver;
-var ItemTypes = require('./Constants').ItemTypes;
+import * as ItemTypes from './Constants'
 var ConfiguredJob = require('./ConfiguredJob');
 var DropTarget = require('react-dnd').DropTarget;
 
