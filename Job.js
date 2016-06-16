@@ -1,8 +1,5 @@
-import React from 'react'
-import { PropTypes as PropTypes }  from 'react'
-
-
-var DragSource = require('react-dnd').DragSource;
+import React, { PropTypes } from 'react'
+import { DragSource } from 'react-dnd'
 import * as ItemTypes from './Constants'
 
 var jobSource = {

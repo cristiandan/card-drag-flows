@@ -1,9 +1,7 @@
-var React = require('react');
-var PropTypes = React.PropTypes;
-var DragSource = require('react-dnd').DragSource;
-var DropTarget = require('react-dnd').DropTarget;
+import React, { PropTypes } from 'react'
+import { DragSource, DropTarget } from 'react-dnd'
 import * as ItemTypes from './Constants'
-var findDOMNode = require('react-dom').findDOMNode;
+import { findDOMNode } from 'react-dom'
 
 var jobSource = {
   beginDrag: function (props) {

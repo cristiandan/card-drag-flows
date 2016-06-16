@@ -1,6 +1,4 @@
-var React = require('react');
-var PropTypes = React.PropTypes;
-
+import React, { PropTypes } from 'react'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 import Job from './Job'
 
