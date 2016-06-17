@@ -1,4 +1,4 @@
-import { ADD_CONFIGURED_JOB, MOVE_CONFIGURED_JOB, ADD_JOB  } from './actions'
+import { ADD_CONFIGURED_JOB, MOVE_CONFIGURED_JOB, ADD_JOB, GET_JOBS_REQUEST, GET_JOBS_FAILURE, GET_JOBS_SUCCESS  } from './actions'
 var Immutable = require('immutable');
 import { combineReducers } from 'redux'
 
