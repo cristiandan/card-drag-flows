@@ -1,4 +1,5 @@
 import jobsProcessor from './jobsProcessor';
+import fetch from 'isomorphic-fetch'
 
 /*
  * action types
@@ -28,17 +29,35 @@ export function addConfiguredJob(job) {
   return { type: ADD_CONFIGURED_JOB, job }
 }
 
-export function getJobs(jobs) {
+export function getJobsRequest() {
   return {
-    type: GET_JOBS_FAILURE,
-    jobs
+    type: GET_JOBS_REQUEST
   }
 }
 
 export function getJobsSuccess(json) {
   return {
     type: GET_JOBS_SUCCESS,
-    data: jobsProcessor(json)
+    jobs: jobsProcessor(json)
   }
+}
+
+export function getJobsFailure(error) {
+  return {
+    type: GET_JOBS_FAILURE,
+    error
+  }
+}
+
+export function fetchJobs() {
+    return function (dispatch) {
+      dispatch(getJobsRequest());
+
+      return fetch('http://localhost:5000/components')
+          .then(response => response.json())
+          .then(json => 
+              dispatch(getJobsSuccess(json))
+          )
+    }
 }
 

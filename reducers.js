@@ -13,6 +13,13 @@ function jobsReducer(state = Immutable.List(jobsList), action) {
     switch(action.type) {
       case ADD_JOB:
         return state.push(action.job);
+      case GET_JOBS_REQUEST:
+      // modify isFetching state to true;
+        return state;
+      case GET_JOBS_SUCCESS:
+        return Immutable.List(action.jobs);
+      case GET_JOBS_FAILURE:
+        return state;
       default:
         return state;
   }
