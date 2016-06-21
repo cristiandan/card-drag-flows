@@ -10,10 +10,24 @@ const jobsApp = combineReducers({
   configuredJobs: configuredJobsReducer
 });
 
-function jobsReducer(state = Immutable.List(jobsList), action) {
+function getEmptyJobsState() {
+  return Object.assign({}, {
+          isFetching: false,
+          data: Immutable.List(jobsList)
+        })
+}
+
+function getEmptyConfiguredJobsState() {
+  return Object.assign({}, {
+          isFetching: false,
+          data: Immutable.List()
+        })
+}
+
+function jobsReducer(state = getEmptyJobsState(), action) {
     switch(action.type) {
       case ADD_JOB:
-        return state.push(action.job);
+        return state.data.push(action.job);
       case GET_JOBS_REQUEST:
       // modify isFetching state to true;
         return state;
@@ -26,7 +40,7 @@ function jobsReducer(state = Immutable.List(jobsList), action) {
   }
 }
 
-function configuredJobsReducer(state = Immutable.List(), action) {
+function configuredJobsReducer(state = getEmptyConfiguredJobsState(), action) {
     switch(action.type) {
       case ADD_CONFIGURED_JOB:
         const job = Object.assign({},action.job, {uuid: guid()});
