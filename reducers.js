@@ -1,6 +1,7 @@
 import { ADD_CONFIGURED_JOB, MOVE_CONFIGURED_JOB, ADD_JOB, GET_JOBS_REQUEST, GET_JOBS_FAILURE, GET_JOBS_SUCCESS  } from './actions'
 var Immutable = require('immutable');
 import { combineReducers } from 'redux'
+import { guid } from './utils'
 
 var jobsList = Immutable.List([{name: "ab1",id:32},{name: "ab2",id:21}, {name:"ab3",id:55}]);
 
@@ -38,14 +39,5 @@ function configuredJobsReducer(state = Immutable.List(), action) {
   }
 }
 
-function guid() {
-  function s4() {
-    return Math.floor((1 + Math.random()) * 0x10000)
-      .toString(16)
-      .substring(1);
-  }
-  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-    s4() + '-' + s4() + s4() + s4();
-}
 
 export default jobsApp
