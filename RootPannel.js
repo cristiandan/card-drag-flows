@@ -8,7 +8,7 @@ import JobContainer from './JobContainer'
 var RootPannel = React.createClass({
     render: function () {
         return (
-          <div style={{backgroundColor:'red'}}>
+          <div className="wrapper uk-grid data-uk-grid-margin">
             <JobContainer/>
             <ConfiguredJobContainer/>
           </div>  

@@ -26,17 +26,13 @@ function collect(connect, monitor) {
 };
 
 const ConfigJobList = ({ jobs, onMove, onDrop, connectDropTarget }) => {
-    return connectDropTarget(<div style={{
-            width: '20%',
-            height: '70%',
-            display: 'flex',
-            flexWrap: 'wrap',
-            backgroundColor: 'yellow'
-          }}>
-    {jobs.data.map( (job,index) =>
-      <ConfiguredJob uuid={job.uuid} name={job.name} id={job.id} key={job.uuid} index={index} onMove={(dragIndex, hoverIndex) => onMove(dragIndex, hoverIndex)}/>
-    )}
-  </div>)
+    return connectDropTarget(
+      <div className="container uk-grid uk-width-1-2 data-uk-grid-margin">
+        {jobs.data.map( (job,index) =>
+          <ConfiguredJob uuid={job.uuid} name={job.name} id={job.id} key={job.uuid} index={index} onMove={(dragIndex, hoverIndex) => onMove(dragIndex, hoverIndex)}/>
+        )}
+      </div>
+    )
 };
 
 ConfigJobList.propTypes = {

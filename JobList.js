@@ -4,17 +4,13 @@ import Job from './Job'
 
 // scoate onDrag
 const JobList = ({ jobs, onDrag }) => {
-    return (<div style={{
-            width: '20%',
-            height: '70%',
-            display: 'flex',
-            flexWrap: 'wrap',
-            backgroundColor: 'blue'
-          }}>
-    {jobs.data.map(job =>
-      <Job name={job.name} id={job.id} key={job.id} onDrag={() => onDrag(job.id)}/>
-    )}
-  </div>)
+    return (
+      <div className="container uk-grid uk-width-1-2 data-uk-grid-margin">
+        {jobs.data.map(job =>
+          <Job name={job.name} id={job.id} key={job.id} onDrag={() => onDrag(job.id)}/>
+        )}
+      </div>
+  )
 };
 
 JobList.propTypes = {
