@@ -50,8 +50,10 @@ function configuredJobsReducer(state = getEmptyConfiguredJobsState(), action) {
 
         return Object.assign({},state, {data: newStateData});
       case MOVE_CONFIGURED_JOB:
-        const selectedJob = state.get(action.fromIndex);  
-        return state.delete(action.fromIndex).insert(action.toIndex,selectedJob);
+        const selectedJob = state.data.get(action.fromIndex);  
+        const newData = state.data.delete(action.fromIndex).insert(action.toIndex,selectedJob);
+
+        return Object.assign({},state, {data: newData});
       default:
         return state;
   }
