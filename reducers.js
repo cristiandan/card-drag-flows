@@ -29,10 +29,12 @@ function jobsReducer(state = getEmptyJobsState(), action) {
       case ADD_JOB:
         return state.data.push(action.job);
       case GET_JOBS_REQUEST:
-      // modify isFetching state to true;
-        return state;
+        return Object.assign({},state,{isFetching:true});
       case GET_JOBS_SUCCESS:
-        return Immutable.List(action.jobs);
+        return Object.assign({}, {
+          isFetching: false,
+          data: Immutable.List(action.jobs)
+        });
       case GET_JOBS_FAILURE:
         return state;
       default:
@@ -44,7 +46,9 @@ function configuredJobsReducer(state = getEmptyConfiguredJobsState(), action) {
     switch(action.type) {
       case ADD_CONFIGURED_JOB:
         const job = Object.assign({},action.job, {uuid: guid()});
-        return state.push(job);
+        const newStateData = state.data.push(job);
+
+        return Object.assign({},state, {data: newStateData});
       case MOVE_CONFIGURED_JOB:
         const selectedJob = state.get(action.fromIndex);  
         return state.delete(action.fromIndex).insert(action.toIndex,selectedJob);

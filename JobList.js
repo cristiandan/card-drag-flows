@@ -11,14 +11,14 @@ const JobList = ({ jobs, onDrag }) => {
             flexWrap: 'wrap',
             backgroundColor: 'blue'
           }}>
-    {jobs.map(job =>
+    {jobs.data.map(job =>
       <Job name={job.name} id={job.id} key={job.id} onDrag={() => onDrag(job.id)}/>
     )}
   </div>)
 };
 
 JobList.propTypes = {
-  jobs: ImmutablePropTypes.list.isRequired,
+  jobs: PropTypes.object.isRequired,
   onDrag: PropTypes.func.isRequired
 }
 
