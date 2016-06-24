@@ -8,10 +8,16 @@ import JobContainer from './JobContainer'
 var RootPannel = React.createClass({
     render: function () {
         return (
-          <div className="wrapper uk-grid data-uk-grid-margin">
-            <JobContainer/>
-            <ConfiguredJobContainer/>
-          </div>  
+          <div id="content" className="uk-container uk-vertical-align">
+              <div className="wrapper uk-grid" data-uk-grid-margin data-uk-observe>
+                <div className="uk-width-1-5">
+                    <JobContainer/>
+                </div>
+                <div className="uk-width-4-5">
+                    <ConfiguredJobContainer/>
+                </div>
+              </div>  
+          </div>
         );
     }
 });

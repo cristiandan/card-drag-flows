@@ -27,7 +27,7 @@ function collect(connect, monitor) {
 
 const ConfigJobList = ({ jobs, onMove, onDrop, connectDropTarget }) => {
     return connectDropTarget(
-      <div className="container uk-grid uk-width-1-2 data-uk-grid-margin">
+      <div id="configuredjoblist" style={{width:"100%", height:"100%"}} className="container uk-grid uk-grid-medium uk-grid-width-xlarge-1-6 uk-grid-width-large-1-5 uk-grid-width-medium-1-4 uk-grid-width-small-1-3 uk-vertical-align-middle" data-uk-grid-margin data-uk-observe>
         {jobs.data.map( (job,index) =>
           <ConfiguredJob uuid={job.uuid} name={job.name} id={job.id} key={job.uuid} index={index} onMove={(dragIndex, hoverIndex) => onMove(dragIndex, hoverIndex)}/>
         )}
