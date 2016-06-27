@@ -82,6 +82,7 @@ var ConfiguredJob = React.createClass({
     render: function () {
        var name = this.props.name;
        var id = this.props.id;
+       var index = this.props.index;
        var connectDragSource = this.props.connectDragSource;
        var connectDropTarget = this.props.connectDropTarget;
        var opacity = this.props.isDragging ? 0 : 1;
@@ -89,6 +90,7 @@ var ConfiguredJob = React.createClass({
        return connectDragSource(connectDropTarget(
            <div className="panel-container" style={{ opacity }}>
               <div className="uk-flex uk-flex-center uk-flex-top uk-text-center uk-panel uk-panel-box">
+                    <div className='uk-flex uk-flex-middle'> <div className='uk-badge'> {index} </div> </div>
                     {name}
                     {id}
               </div>

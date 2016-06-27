@@ -3,7 +3,9 @@ var Immutable = require('immutable');
 import { combineReducers } from 'redux'
 import { guid } from './utils'
 
-var jobsList = Immutable.List([{name: "ab1",id:32},{name: "ab2",id:21}, {name:"ab3",id:55}]);
+var defaultJobsList = Immutable.List([{name: "ab1",id:32},{name: "ab2",id:21}, {name:"ab3",id:55}]);
+var defaultConfiguredJobsList = Immutable.List();
+var defaultFlowList = Immutable.List();
 
 const jobsApp = combineReducers({
   jobs: jobsReducer,
@@ -13,14 +15,21 @@ const jobsApp = combineReducers({
 function getEmptyJobsState() {
   return Object.assign({}, {
           isFetching: false,
-          data: Immutable.List(jobsList)
+          data: Immutable.List(defaultJobsList)
         })
+}
+
+function  getEmptyFlowsState() {
+  return Object.assign({}, {
+          isFetching: false,
+          data: Immutable.List(defaultFlowList)
+  })
 }
 
 function getEmptyConfiguredJobsState() {
   return Object.assign({}, {
           isFetching: false,
-          data: Immutable.List()
+          data: Immutable.List(defaultConfiguredJobsList)
         })
 }
 
