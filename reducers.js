@@ -1,4 +1,4 @@
-import { ADD_CONFIGURED_JOB, MOVE_CONFIGURED_JOB, ADD_JOB, GET_JOBS_REQUEST, GET_JOBS_FAILURE, GET_JOBS_SUCCESS, GET_FLOWS_REQUEST, GET_FLOWS_FAILURE, GET_FLOWS_SUCCESS } from './actions'
+import { ADD_CONFIGURED_JOB, MOVE_CONFIGURED_JOB, ADD_JOB, GET_JOBS_REQUEST, GET_JOBS_FAILURE, GET_JOBS_SUCCESS, GET_FLOWS_REQUEST, GET_FLOWS_FAILURE, GET_FLOWS_SUCCESS,LOAD_FLOW } from './actions'
 var Immutable = require('immutable');
 import { combineReducers } from 'redux'
 import { guid } from './utils'
@@ -79,6 +79,9 @@ function flowsReducer(state = getEmptyFlowsState(), action) {
           data: Immutable.List(action.flows)
         });
       case GET_JOBS_FAILURE:
+        return state;
+      case LOAD_FLOW:
+        console.log(action.flowId);
         return state;
       default:
         return state;

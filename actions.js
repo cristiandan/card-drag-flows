@@ -14,6 +14,7 @@ export const GET_JOBS_SUCCESS = 'GET_JOBS_SUCCESS'
 export const GET_FLOWS_REQUEST = 'GET_FLOWS_REQUEST'
 export const GET_FLOWS_FAILURE = 'GET_FLOWS_FAILURE'
 export const GET_FLOWS_SUCCESS = 'GET_FLOWS_SUCCESS'
+export const LOAD_FLOW = 'LOAD_FLOW'
 
 
 /*
@@ -93,6 +94,13 @@ export function fetchFlows() {
             .then(json => 
                 dispatch(getFlowsSuccess(json))
             )
+    }
+}
+
+export function loadFlow(id) {
+    return {
+      type: LOAD_FLOW,
+      flowId: id
     }
 }
 

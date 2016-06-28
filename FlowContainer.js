@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { addJob } from './actions'
+import { loadFlow } from './actions'
 import FlowList from './FlowList'
 
 const mapStateToProps = (state) => {
@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onClick: (id) => {
-      
+      dispatch(loadFlow(id));
     }
   }
 }
