@@ -24,7 +24,6 @@ const Job = ({ name, id, connectDragSource, isDragging}) => {
         <div className="panel-container">
           <div className="uk-flex uk-flex-center uk-flex-top uk-text-center uk-panel uk-panel-box">
               {name}
-              {id}
           </div>
         </div>
        );
@@ -32,7 +31,7 @@ const Job = ({ name, id, connectDragSource, isDragging}) => {
 
 Job.propTypes = {
        name: PropTypes.string.isRequired,
-       id: PropTypes.number.isRequired,
+       id: PropTypes.string.isRequired,
        connectDragSource: PropTypes.func.isRequired,
        isDragging: PropTypes.bool.isRequired
    };

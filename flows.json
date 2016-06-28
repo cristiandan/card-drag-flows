@@ -1,0 +1,63 @@
+{
+    "flows": [{
+        "name": "flow1",
+        "components": [{
+            "id": "comp1",
+            "configuration": {
+                "scriptName": "component1.py",
+                "queues": {
+                    "in": ["queue0"],
+                    "out": ["queue1"]
+                },
+                "scaling": {
+                    "horizontal": 1,
+                    "vertical": 1
+                }
+            },
+            "parameters": {
+                "param1": "val1",
+                "param2": "val2",
+                "param3": "val3"
+            }
+
+        }, {
+            "id": "comp2",
+            "configuration": {
+                "scriptName": "component2.py",
+                "queues": {
+                    "in": ["queue1"],
+                    "out": ["queue2"]
+                },
+                "scaling": {
+                    "horizontal": 1,
+                    "vertical": 1
+                }
+            },
+            "parameters": {
+                "param1": "val1",
+                "param2": "val2",
+                "param3": "val3"
+            }
+
+        }, {
+            "id": "comp3",
+            "configuration": {
+                "scriptName": "component2.py",
+                "queues": {
+                    "in": ["queue2"],
+                    "out": ["queue3"]
+                },
+                "scaling": {
+                    "horizontal": 1,
+                    "vertical": 1
+                }
+            },
+            "parameters": {
+                "param1": "val1",
+                "param2": "val2",
+                "param3": "val3"
+            }
+
+        }]
+    }]
+}

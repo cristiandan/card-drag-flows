@@ -72,7 +72,7 @@ function collectTarget(connect, monitor) {
 var ConfiguredJob = React.createClass({
     propTypes: {
        name: PropTypes.string.isRequired,
-       id: PropTypes.number.isRequired,
+       id: PropTypes.string.isRequired,
        connectDragSource: PropTypes.func.isRequired,
        isDragging: PropTypes.bool.isRequired,
        onMove: PropTypes.func.isRequired,
@@ -92,7 +92,6 @@ var ConfiguredJob = React.createClass({
               <div className="uk-flex uk-flex-center uk-flex-top uk-text-center uk-panel uk-panel-box">
                     <div className='uk-flex uk-flex-middle'> <div className='uk-badge'> {index} </div> </div>
                     {name}
-                    {id}
               </div>
            </div>
        ));

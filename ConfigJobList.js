@@ -6,7 +6,7 @@ import * as ItemTypes from './Constants'
 
 var target = {
     
-  canDrop: function (props,a ,b, c) {
+  canDrop: function (props) {
     return true;
   },
 

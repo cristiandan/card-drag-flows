@@ -1,4 +1,4 @@
-import jobsProcessor from './jobsProcessor';
+import { jobsProcessor, flowsProcessor } from './dataProcessor';
 import fetch from 'isomorphic-fetch'
 
 /*
@@ -11,6 +11,9 @@ export const ADD_JOB = 'ADD_JOB'
 export const GET_JOBS_REQUEST = 'GET_JOBS_REQUEST'
 export const GET_JOBS_FAILURE = 'GET_JOBS_FAILURE'
 export const GET_JOBS_SUCCESS = 'GET_JOBS_SUCCESS'
+export const GET_FLOWS_REQUEST = 'GET_FLOWS_REQUEST'
+export const GET_FLOWS_FAILURE = 'GET_FLOWS_FAILURE'
+export const GET_FLOWS_SUCCESS = 'GET_FLOWS_SUCCESS'
 
 
 /*
@@ -53,11 +56,43 @@ export function fetchJobs() {
     return function (dispatch) {
       dispatch(getJobsRequest());
 
-      return fetch('http://localhost:5000/components')
+      return fetch('jobs.json')
           .then(response => response.json())
           .then(json => 
               dispatch(getJobsSuccess(json))
           )
+    }
+}
+
+export function getFlowsRequest() {
+  return {
+    type: GET_FLOWS_REQUEST
+  }
+}
+
+export function getFlowsSuccess(json) {
+  return {
+    type: GET_FLOWS_SUCCESS,
+    flows: flowsProcessor(json)
+  }
+}
+
+export function getFlowsFailure(error) {
+  return {
+    type: GET_FLOWS_FAILURE,
+    error
+  }
+}
+
+export function fetchFlows() {
+    return function (dispatch) {
+      dispatch(getFlowsRequest());
+
+      return fetch('flows.json')
+            .then(response => response.json())
+            .then(json => 
+                dispatch(getFlowsSuccess(json))
+            )
     }
 }
 
