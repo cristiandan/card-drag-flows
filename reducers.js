@@ -64,6 +64,9 @@ function configuredJobsReducer(state = getEmptyConfiguredJobsState(), action) {
         const newData = state.data.delete(action.fromIndex).insert(action.toIndex,selectedJob);
 
         return Object.assign({},state, {data: newData});
+      case LOAD_FLOW:
+        console.log(action.flow);
+        return Object.assign({},state,{data: Immutable.List(action.flow.components)});
       default:
         return state;
   }
@@ -79,9 +82,6 @@ function flowsReducer(state = getEmptyFlowsState(), action) {
           data: Immutable.List(action.flows)
         });
       case GET_JOBS_FAILURE:
-        return state;
-      case LOAD_FLOW:
-        console.log(action.flowId);
         return state;
       default:
         return state;

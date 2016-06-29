@@ -1,6 +1,7 @@
 {
     "flows": [{
         "name": "flow1",
+        "id": "FL1324",
         "components": [{
             "id": "comp1",
             "configuration": {

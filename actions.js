@@ -1,5 +1,9 @@
-import { jobsProcessor, flowsProcessor } from './dataProcessor';
+import {
+  jobsProcessor,
+  flowsProcessor
+} from './dataProcessor';
 import fetch from 'isomorphic-fetch'
+import { guid } from './utils'
 
 /*
  * action types
@@ -15,6 +19,7 @@ export const GET_FLOWS_REQUEST = 'GET_FLOWS_REQUEST'
 export const GET_FLOWS_FAILURE = 'GET_FLOWS_FAILURE'
 export const GET_FLOWS_SUCCESS = 'GET_FLOWS_SUCCESS'
 export const LOAD_FLOW = 'LOAD_FLOW'
+export const ERROR_LOADING_FLOW = 'ERROR_LOADING_FLOW'
 
 
 /*
@@ -22,15 +27,25 @@ export const LOAD_FLOW = 'LOAD_FLOW'
  */
 
 export function addJob(job) {
-  return { type: ADD_JOB, job }
+  return {
+    type: ADD_JOB,
+    job
+  }
 }
 
-export function moveConfiguredJob(fromIndex,toIndex) {
-  return { type: MOVE_CONFIGURED_JOB, fromIndex, toIndex }
+export function moveConfiguredJob(fromIndex, toIndex) {
+  return {
+    type: MOVE_CONFIGURED_JOB,
+    fromIndex,
+    toIndex
+  }
 }
 
 export function addConfiguredJob(job) {
-  return { type: ADD_CONFIGURED_JOB, job }
+  return {
+    type: ADD_CONFIGURED_JOB,
+    job
+  }
 }
 
 export function getJobsRequest() {
@@ -54,15 +69,15 @@ export function getJobsFailure(error) {
 }
 
 export function fetchJobs() {
-    return function (dispatch) {
-      dispatch(getJobsRequest());
+  return function(dispatch) {
+    dispatch(getJobsRequest());
 
-      return fetch('jobs.json')
-          .then(response => response.json())
-          .then(json => 
-              dispatch(getJobsSuccess(json))
-          )
-    }
+    return fetch('jobs.json')
+      .then(response => response.json())
+      .then(json =>
+        dispatch(getJobsSuccess(json))
+      )
+  }
 }
 
 export function getFlowsRequest() {
@@ -86,21 +101,40 @@ export function getFlowsFailure(error) {
 }
 
 export function fetchFlows() {
-    return function (dispatch) {
-      dispatch(getFlowsRequest());
+  return function(dispatch) {
+    dispatch(getFlowsRequest());
 
-      return fetch('flows.json')
-            .then(response => response.json())
-            .then(json => 
-                dispatch(getFlowsSuccess(json))
-            )
-    }
+    return fetch('flows.json')
+      .then(response => response.json())
+      .then(json =>
+        dispatch(getFlowsSuccess(json))
+      )
+  }
 }
 
 export function loadFlow(id) {
-    return {
-      type: LOAD_FLOW,
-      flowId: id
+
+  return (dispatch, getState) => {
+    const flow = getState()
+      .flows.data.filter(x => x.id == id).get(0);
+    if (flow) {
+      dispatch(loadFlowSuccess(flow))
     }
+
+    dispatch(loadFlowError());
+  };
 }
 
+export function loadFlowSuccess(flow) {
+    flow.components.map(x => x.uuid = guid())
+    return {
+        type: LOAD_FLOW,
+        flow
+      };
+}
+
+export function loadFlowError() {
+  return {
+      type: ERROR_LOADING_FLOW
+    }
+}
