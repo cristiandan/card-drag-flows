@@ -3,7 +3,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes'
 import Job from './Job'
 
 // scoate onDrag
-const JobList = ({ jobs, onDrag }) => {
+const JobList1 = ({ jobs, onDrag }) => {
     return (
       <div id="joblist" className="container uk-grid uk-grid-small uk-grid-width-1-1 uk-vertical-align-middle uk-margin-bottom uk-scrollable-box" data-uk-grid-margin data-uk-observe>
         {jobs.data.map(job =>
@@ -16,6 +16,13 @@ const JobList = ({ jobs, onDrag }) => {
 JobList.propTypes = {
   jobs: PropTypes.object.isRequired,
   onDrag: PropTypes.func.isRequired
+}
+
+
+class JobList extends React.Component {
+  // state = {
+  //   isShowingModal: false,
+  // }
 }
 
 export default JobList;
