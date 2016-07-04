@@ -20,7 +20,7 @@ export const GET_FLOWS_FAILURE = 'GET_FLOWS_FAILURE'
 export const GET_FLOWS_SUCCESS = 'GET_FLOWS_SUCCESS'
 export const LOAD_FLOW = 'LOAD_FLOW'
 export const ERROR_LOADING_FLOW = 'ERROR_LOADING_FLOW'
-
+export const SELECT_MODAL_JOB = 'SELECT_MODAL_JOB'
 
 /*
  * action creators
@@ -118,10 +118,11 @@ export function loadFlow(id) {
     const flow = getState()
       .flows.data.filter(x => x.id == id).get(0);
     if (flow) {
-      dispatch(loadFlowSuccess(flow))
+      dispatch(loadFlowSuccess(flow));
     }
-
-    dispatch(loadFlowError());
+    else {
+      dispatch(loadFlowError());
+    }
   };
 }
 
@@ -137,4 +138,11 @@ export function loadFlowError() {
   return {
       type: ERROR_LOADING_FLOW
     }
+}
+
+export function selectModalJob(jobId) {
+  return{
+    type: SELECT_MODAL_JOB,
+    jobId
+  }
 }

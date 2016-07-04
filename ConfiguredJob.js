@@ -86,12 +86,14 @@ var ConfiguredJob = React.createClass({
        var connectDragSource = this.props.connectDragSource;
        var connectDropTarget = this.props.connectDropTarget;
        var opacity = this.props.isDragging ? 0 : 1;
+       var onClick = this.props.onClick;
 
        return connectDragSource(connectDropTarget(
            <div className="panel-container" style={{ opacity }}>
               <div className="uk-flex uk-flex-center uk-flex-top uk-text-center uk-panel uk-panel-box">
                     <div className='uk-flex uk-flex-middle'> <div className='uk-badge'> {index} </div> </div>
                     {name}
+                    <button onClick={onClick}>Edit</button>
               </div>
            </div>
        ));
