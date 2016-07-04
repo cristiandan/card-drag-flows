@@ -1,0 +1,40 @@
+.component-icon {
+    width: 20px;
+    height: 20px;
+}
+
+div.component-id {
+    display: none;
+}
+
+div.component-uuid {
+    display: none;
+}
+
+/*#content {
+    height: 50vh;
+}*/
+
+#joblist {
+    max-height: 50vh;
+    max-width: fit-content;
+    min-width: 8vw;
+}
+
+#configuredjoblist {
+    min-height: 100%;
+    min-width: 100%;
+}
+
+#content {
+    max-width: 1400px;
+}
+
+.component-title {
+    word-wrap: break-word;
+    max-width: 100%
+}
+
+#scheme-results {
+    font-size: 15px;
+}

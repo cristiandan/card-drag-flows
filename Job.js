@@ -21,19 +21,17 @@ const Job = ({ name, id, connectDragSource, isDragging}) => {
        //var connectDragSource = this.props.connectDragSource;
        
        return connectDragSource(
-        <div style={{
-            position: 'relative',
-            width: '100%'
-        }}>
-            {name}
-            {id}
+        <div className="panel-container">
+          <div className="uk-flex uk-flex-center uk-flex-top uk-text-center uk-panel uk-panel-box">
+              {name}
+          </div>
         </div>
        );
 };
 
 Job.propTypes = {
        name: PropTypes.string.isRequired,
-       id: PropTypes.number.isRequired,
+       id: PropTypes.string.isRequired,
        connectDragSource: PropTypes.func.isRequired,
        isDragging: PropTypes.bool.isRequired
    };

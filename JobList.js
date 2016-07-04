@@ -4,17 +4,13 @@ import Job from './Job'
 
 // scoate onDrag
 const JobList = ({ jobs, onDrag }) => {
-    return (<div style={{
-            width: '20%',
-            height: '70%',
-            display: 'flex',
-            flexWrap: 'wrap',
-            backgroundColor: 'blue'
-          }}>
-    {jobs.data.map(job =>
-      <Job name={job.name} id={job.id} key={job.id} onDrag={() => onDrag(job.id)}/>
-    )}
-  </div>)
+    return (
+      <div id="joblist" className="container uk-grid uk-grid-small uk-grid-width-1-1 uk-vertical-align-middle uk-margin-bottom uk-scrollable-box" data-uk-grid-margin data-uk-observe>
+        {jobs.data.map(job =>
+          <Job name={job.name} id={job.id} key={job.id} onDrag={() => onDrag(job.id)}/>
+        )}
+      </div>
+  )
 };
 
 JobList.propTypes = {
@@ -23,35 +19,10 @@ JobList.propTypes = {
 }
 
 
-// var jobs = [{name: "ab1",id:32},{name: "ab2",id:21}, {name:"ab3",id:55}];
+// class JobList extends React.Component {
+//   state = {
+//     isShowingModal: false,
+//   }
+// }
 
-// var JobList = React.createClass({
-//     propTypes: {
-        
-//     },
-//     renderJob: function (job) {
-//         return (
-//             <Job name={job.name} id={job.id} key={job.id}/>
-//         );
-//     },
-//     render: function () {
-//         var renderedJobs = [];
-//         for (var i =0; i<jobs.length; i++) {
-//             renderedJobs.push(this.renderJob(jobs[i]));
-//         }
-        
-//         return (
-//           <div style={{
-//             width: '20%',
-//             height: '70%',
-//             display: 'flex',
-//             flexWrap: 'wrap',
-//             backgroundColor: 'blue'
-//           }}>
-//             {renderedJobs}
-//           </div>  
-//         );
-//     }
-// });
-
-module.exports = JobList;
+export default JobList;

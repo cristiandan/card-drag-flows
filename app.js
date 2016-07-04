@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
 
 import jobsApp from './reducers'
-import { fetchJobs } from './actions'
+import { fetchJobs, fetchFlows } from './actions'
 
 
 var store = createStore(
@@ -24,5 +24,9 @@ ReactDOM.render(
 );
 
 store.dispatch(fetchJobs('reactjs')).then(() =>
+  console.log(store.getState())
+)
+
+store.dispatch(fetchFlows('reactjs')).then(() =>
   console.log(store.getState())
 )
