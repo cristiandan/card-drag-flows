@@ -4,6 +4,7 @@ import ConfiguredJob from './ConfiguredJob'
 import { DropTarget } from 'react-dnd';
 import * as ItemTypes from './Constants'
 import {ModalContainer, ModalDialog} from 'react-modal-dialog';
+import EditableModal from './EditableModal'
 
 var target = {
     
@@ -74,7 +75,7 @@ class ConfigJobList extends React.Component {
           <ModalContainer onClose={this.closeModal}>
             <ModalDialog onClose={this.closeModal}>
               {jobs.selectedModalJob.name}
-              
+              <EditableModal job={jobs.selectedModalJob}/>
             </ModalDialog>
           </ModalContainer> : "" }
 
