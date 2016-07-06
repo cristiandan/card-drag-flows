@@ -1,17 +1,18 @@
 import React, { PropTypes } from 'react'
 import ModalJob from './ModalJob'
 import { connect } from 'react-redux'
+import {updateConfiguredJob} from './actions'
 
 const mapStateToProps = (state) => {
   return {
-    jobs: state.configuredJobs
+    job: state.configuredJobs.selectedModalJob
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSave: (job) => {
-      dispatch()
+    onSave: (uuid, attributes) => {
+      dispatch(updateConfiguredJob(uuid,attributes));
     }
   }
 }

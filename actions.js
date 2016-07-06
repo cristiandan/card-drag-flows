@@ -21,6 +21,7 @@ export const GET_FLOWS_SUCCESS = 'GET_FLOWS_SUCCESS'
 export const LOAD_FLOW = 'LOAD_FLOW'
 export const ERROR_LOADING_FLOW = 'ERROR_LOADING_FLOW'
 export const SELECT_MODAL_JOB = 'SELECT_MODAL_JOB'
+export const UPDATE_CONFIGURED_JOB = 'UPDATE_CONFIGURED_JOB'
 
 /*
  * action creators
@@ -144,5 +145,13 @@ export function selectModalJob(jobId) {
   return{
     type: SELECT_MODAL_JOB,
     jobId
+  }
+}
+
+export function updateConfiguredJob(jobUuid, attributes) {
+  return {
+    type: UPDATE_CONFIGURED_JOB,
+    jobUuid,
+    attributes
   }
 }

@@ -1,4 +1,4 @@
-import { ADD_CONFIGURED_JOB, MOVE_CONFIGURED_JOB, ADD_JOB, GET_JOBS_REQUEST, GET_JOBS_FAILURE, GET_JOBS_SUCCESS, GET_FLOWS_REQUEST, GET_FLOWS_FAILURE, GET_FLOWS_SUCCESS,LOAD_FLOW, SELECT_MODAL_JOB } from './actions'
+import { ADD_CONFIGURED_JOB, MOVE_CONFIGURED_JOB, ADD_JOB, GET_JOBS_REQUEST, GET_JOBS_FAILURE, GET_JOBS_SUCCESS, GET_FLOWS_REQUEST, GET_FLOWS_FAILURE, GET_FLOWS_SUCCESS,LOAD_FLOW, SELECT_MODAL_JOB, UPDATE_CONFIGURED_JOB } from './actions'
 var Immutable = require('immutable');
 import { combineReducers } from 'redux'
 import { guid } from './utils'
@@ -72,6 +72,12 @@ function configuredJobsReducer(state = getEmptyConfiguredJobsState(), action) {
         const selected = state.data.filter(x => x.uuid == action.jobId).get(0);
 
         return Object.assign({}, state, {selectedModalJob: selected})
+      case UPDATE_CONFIGURED_JOB:
+        const selectedJobIndex = state.data.findKey(x => x.uuid == action.jobUuid);
+        const selectedJobToUpdate = state.data.get(selectedJobIndex);
+        const updatedJob = Object.assign({}, selectedJobToUpdate, { parameters: action.attributes })
+
+        return Object.assign({},state,{data: state.data.set(selectedJobIndex,updatedJob)});
       default:
         return state;
   }

@@ -74,7 +74,6 @@ class ConfigJobList extends React.Component {
         { this.state.isShowingModal && jobs.selectedModalJob ? 
           <ModalContainer onClose={this.closeModal}>
             <ModalDialog onClose={this.closeModal}>
-              {jobs.selectedModalJob.name}
               <EditableModal job={jobs.selectedModalJob}/>
             </ModalDialog>
           </ModalContainer> : "" }
