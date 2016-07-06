@@ -56,8 +56,7 @@ function jobsReducer(state = getEmptyJobsState(), action) {
 function configuredJobsReducer(state = getEmptyConfiguredJobsState(), action) {
     switch(action.type) {
       case ADD_CONFIGURED_JOB:
-        const job = Object.assign({},action.job, {uuid: guid()});
-        const newStateData = state.data.push(job);
+        const newStateData = state.data.push(action.job);
 
         return Object.assign({},state, {data: newStateData});
       case MOVE_CONFIGURED_JOB:

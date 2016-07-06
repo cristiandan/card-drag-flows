@@ -42,11 +42,29 @@ export function moveConfiguredJob(fromIndex, toIndex) {
   }
 }
 
-export function addConfiguredJob(job) {
+export function addConfiguredJob(jobId) {
+  return (dispatch, getState) => {
+    const job = getState()
+      .jobs.data.filter(x => x.id == jobId).get(0);
+    if (job) {
+      const newJob = Object.assign({}, job, {uuid: guid()})
+      dispatch(addConfiguredJobSuccess(newJob));
+    }
+    else {
+      dispatch(addConfiguredJobError());
+    }
+  };
+}
+
+export function addConfiguredJobSuccess(job) {
   return {
     type: ADD_CONFIGURED_JOB,
     job
   }
+}
+
+export function addConfiguredJobError() {
+  
 }
 
 export function getJobsRequest() {

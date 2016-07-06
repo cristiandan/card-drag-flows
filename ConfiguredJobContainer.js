@@ -13,8 +13,8 @@ const mapDispatchToProps = (dispatch) => {
     onMove: (dragIndex, hoverIndex) => {
       dispatch(moveConfiguredJob(dragIndex, hoverIndex))
     },
-    onDrop: (job) => {
-      dispatch(addConfiguredJob(job))
+    onDrop: (jobId) => {
+      dispatch(addConfiguredJob(jobId))
     },
     onSelectModalJob: (jobId) => {
       dispatch(selectModalJob(jobId))

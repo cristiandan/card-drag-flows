@@ -14,7 +14,7 @@ var target = {
 
   drop: function (props, monitor, component) {
     var item = monitor.getItem();
-    props.onDrop({id: item.id, name: item.name});
+    props.onDrop(item.id);
     return { moved: true };
   }
 };
