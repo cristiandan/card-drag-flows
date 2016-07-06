@@ -63,10 +63,12 @@ class ConfigJobList extends React.Component {
   }
 
   render() {
-    var jobs = this.props.jobs;
-    var onDrag = this.props.onDrag;
-    var connectDropTarget = this.props.connectDropTarget;
+    const jobs = this.props.jobs;
+    const onDrag = this.props.onDrag;
+    const connectDropTarget = this.props.connectDropTarget;
+    const onClickPostData = this.props.onClickPostData;
     return connectDropTarget (
+      <div>
       <div id="configuredjoblist" style={{width:"100%", height:"100%"}} className="container uk-grid uk-grid-medium uk-grid-width-xlarge-1-6 uk-grid-width-large-1-5 uk-grid-width-medium-1-4 uk-grid-width-small-1-3 uk-vertical-align-middle" data-uk-grid-margin data-uk-observe>
         {jobs.data.map( (job,index) =>
           <ConfiguredJob uuid={job.uuid} name={job.name} id={job.id} key={job.uuid} index={index} onMove={(dragIndex, hoverIndex) => onMove(dragIndex, hoverIndex)} onClick={() => this.openModal(job.uuid)}/>
@@ -77,9 +79,9 @@ class ConfigJobList extends React.Component {
               <EditableModal job={jobs.selectedModalJob}/>
             </ModalDialog>
           </ModalContainer> : "" }
-
       </div>
-        
+      <button onClick={onClickPostData}>Save</button>
+        </div>
       )
   }
 }

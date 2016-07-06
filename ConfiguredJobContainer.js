@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { addConfiguredJob, moveConfiguredJob, selectModalJob } from './actions'
+import { addConfiguredJob, moveConfiguredJob, selectModalJob, postConfiguredJobData } from './actions'
 import ConfigJobList from './ConfigJobList'
 
 const mapStateToProps = (state) => {
@@ -18,6 +18,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     onSelectModalJob: (jobId) => {
       dispatch(selectModalJob(jobId))
+    },
+    onClickPostData: () => {
+      dispatch(postConfiguredJobData())
     }
   }
 }

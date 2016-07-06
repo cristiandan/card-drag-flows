@@ -22,6 +22,7 @@ export const LOAD_FLOW = 'LOAD_FLOW'
 export const ERROR_LOADING_FLOW = 'ERROR_LOADING_FLOW'
 export const SELECT_MODAL_JOB = 'SELECT_MODAL_JOB'
 export const UPDATE_CONFIGURED_JOB = 'UPDATE_CONFIGURED_JOB'
+export const POST_CONFIGURED_JOB_DATA_SUCCESS = 'POST_CONFIGURED_JOB_DATA_SUCCESS'
 
 /*
  * action creators
@@ -171,5 +172,27 @@ export function updateConfiguredJob(jobUuid, attributes) {
     type: UPDATE_CONFIGURED_JOB,
     jobUuid,
     attributes
+  }
+}
+
+export function postConfiguredJobData() {
+  return (dispatch, getState) => {
+    const configuredFlowData = getState()
+      .configuredJobs.data.toJS();
+    if (configuredFlowData) {
+      // post data here
+      console.log(configuredFlowData);
+      dispatch(postConfiguredJobDataSuccess(configuredFlowData));
+    }
+    else {
+      //dispatch(Error());
+    }
+  };
+}
+
+export function postConfiguredJobDataSuccess(data) {
+  return {
+    type: POST_CONFIGURED_JOB_DATA_SUCCESS,
+    data
   }
 }
