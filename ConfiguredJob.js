@@ -90,7 +90,7 @@ var ConfiguredJob = React.createClass({
 
        return connectDragSource(connectDropTarget(
            <div className="panel-container" style={{ opacity }}>
-              <div className="uk-flex uk-flex-center uk-flex-top uk-text-center uk-panel uk-panel-box">
+              <div className="uk-flex-center uk-flex-top uk-text-center uk-panel uk-panel-box">
                     <div className='uk-flex uk-flex-middle'> <div className='uk-badge'> {index} </div> </div>
                     <div>{name}</div>
                     <div className="uk-flex uk-flex-bottom uk-flex-center" onClick={onClick}> <a href="#" className="uk-button uk-button-primary uk-button-mini">Edit</a></div>

@@ -28,6 +28,7 @@ div.component-uuid {
 
 #content {
     max-width: 1400px;
+    padding-top: 15px;
 }
 
 .component-title {

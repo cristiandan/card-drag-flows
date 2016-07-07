@@ -67,6 +67,7 @@ class ConfigJobList extends React.Component {
     const onDrag = this.props.onDrag;
     const connectDropTarget = this.props.connectDropTarget;
     const onClickPostData = this.props.onClickPostData;
+    const onMove = this.props.onMove;
     return connectDropTarget (
       <div>
       <div id="configuredjoblist" style={{width:"100%", height:"100%"}} className="container uk-grid uk-grid-medium uk-grid-width-xlarge-1-6 uk-grid-width-large-1-5 uk-grid-width-medium-1-4 uk-grid-width-small-1-3 uk-vertical-align-middle" data-uk-grid-margin data-uk-observe>
