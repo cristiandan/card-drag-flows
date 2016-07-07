@@ -3,6 +3,7 @@ import { DragDropContext } from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 import ConfiguredJobContainer from './ConfiguredJobContainer'
 import FlowContainer from './FlowContainer'
+import CodeEditContainer from './CodeEditContainer'
 
 import JobContainer from './JobContainer'
 
@@ -23,9 +24,7 @@ var RootPannel = React.createClass({
                     <FlowContainer/>
                 </div>
                 <div className="uk-width-4-5">
-                    results
-                    text
-                    text
+                    <CodeEditContainer/>
                 </div>
               </div>  
           </div>
