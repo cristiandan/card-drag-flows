@@ -4,7 +4,7 @@ import ConfiguredJob from './ConfiguredJob'
 import { DropTarget } from 'react-dnd';
 import * as ItemTypes from './Constants'
 import {ModalContainer, ModalDialog} from 'react-modal-dialog';
-import EditableModal from './EditableModal'
+import ModalJob from './ModalJob'
 
 var target = {
     
@@ -68,6 +68,7 @@ class ConfigJobList extends React.Component {
     const connectDropTarget = this.props.connectDropTarget;
     const onClickPostData = this.props.onClickPostData;
     const onMove = this.props.onMove;
+    const onSave = this.props.onSave;
     return connectDropTarget (
       <div>
       <div id="configuredjoblist" style={{width:"100%", height:"100%"}} className="container uk-grid uk-grid-medium uk-grid-width-xlarge-1-6 uk-grid-width-large-1-5 uk-grid-width-medium-1-4 uk-grid-width-small-1-3 uk-vertical-align-middle" data-uk-grid-margin data-uk-observe>
@@ -77,7 +78,7 @@ class ConfigJobList extends React.Component {
         { this.state.isShowingModal && jobs.selectedModalJob ? 
           <ModalContainer onClose={this.closeModal}>
             <ModalDialog onClose={this.closeModal}>
-              <EditableModal job={jobs.selectedModalJob}/>
+              <ModalJob job={jobs.selectedModalJob} onClose={this.closeModal} onSave={onSave}/>
             </ModalDialog>
           </ModalContainer> : "" }
       </div>

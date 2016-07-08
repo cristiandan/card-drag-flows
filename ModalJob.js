@@ -32,6 +32,7 @@ class ModalJob extends React.Component {
 
     onClickSave () {
         this.props.onSave(this.props.job.uuid, this.state.attributes)
+        this.props.onClose();
     }
 
     handleParameterChange (event,key) {

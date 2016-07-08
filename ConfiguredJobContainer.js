@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { addConfiguredJob, moveConfiguredJob, selectModalJob, postConfiguredJobData } from './actions'
+import { addConfiguredJob, moveConfiguredJob, selectModalJob, postConfiguredJobData, updateConfiguredJob } from './actions'
 import ConfigJobList from './ConfigJobList'
 
 const mapStateToProps = (state) => {
@@ -21,6 +21,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     onClickPostData: () => {
       dispatch(postConfiguredJobData())
+    },
+    onSave: (uuid, attributes) => {
+      dispatch(updateConfiguredJob(uuid,attributes));
     }
   }
 }
