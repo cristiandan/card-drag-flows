@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import {inheritedParametersProcessor} from './dataProcessor'
 
 // const ModalJob2 = ({job, onSave}) => {
 //     var parameters = job.parameters;
@@ -37,23 +38,30 @@ class ModalJob extends React.Component {
 
     handleParameterChange (event,key) {
         const value = event.target.value;
-        const changedAttributes = Object.assign({}, this.state.attributes, { [key] : value });
+        const attributesData = Object.assign({},this.state.attributes[key], { value, inherited: false });
+        const changedAttributes = Object.assign({}, this.state.attributes, { [key] : attributesData });
 
         this.setState({attributes: changedAttributes})
     }
 
     render() {
-        var parameters = this.state.attributes;
+        var parameters = inheritedParametersProcessor(this.state.attributes);
         var job = this.props.job;
-        var rows = [];
-        for (const key in parameters) {
-            rows.push(<div key={key}> {key} <input type='text' value ={parameters[key]} onChange={(event) => this.handleParameterChange(event,key)} /> </div>);
+        var activeRows = [];
+        var advancedRows = [];
+        for (const key in parameters.activeParams) {
+            activeRows.push(<div key={key}> {key} <input type='text' value ={parameters.activeParams[key].value} onChange={(event) => this.handleParameterChange(event,key)} /> </div>);
+        }
+        for (const key in parameters.inheritedParams) {
+            advancedRows.push(<div key={key}> {key} <input type='text' value ={parameters.inheritedParams[key].value} onChange={(event) => this.handleParameterChange(event,key)} /> </div>);
         }
         
         return (
             <div>
                 {job.name}
-                {rows}
+                {activeRows}
+                Advanced:
+                {advancedRows}
                 <button onClick={this.onClickSave}>save</button>
             </div>
         );

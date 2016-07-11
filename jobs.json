@@ -13,10 +13,31 @@
             }
         },
         "parameters": {
-            "param1": "val1",
-            "param2": "val2",
-            "param3": "val3"
-        }
+                "param1": { 
+                    "inherited": true,
+                    "sensitive": true,
+                    "value": "val1",
+                    "description": "this is the param 1"                  
+                },
+                "param2": { 
+                    "inherited": false,
+                    "sensitive": true,
+                    "value": "val2",
+                    "description": "this is the param 2"                  
+                },
+                "param3": { 
+                    "inherited": false,
+                    "sensitive": false,
+                    "value": "val3",
+                    "description": "this is the param 3"                  
+                },
+                "param4": { 
+                    "inherited": true,
+                    "sensitive": false,
+                    "value": "val4",
+                    "description": "this is the param 4"                  
+                }
+            }
 
     }, {
         "id": "comp2",
@@ -32,10 +53,31 @@
             }
         },
         "parameters": {
-            "param1": "val1",
-            "param2": "val2",
-            "param3": "val3"
-        }
+                "param1": { 
+                    "inherited": true,
+                    "sensitive": true,
+                    "value": "val1",
+                    "description": "this is the param 1"                  
+                },
+                "param2": { 
+                    "inherited": false,
+                    "sensitive": true,
+                    "value": "val2",
+                    "description": "this is the param 2"                  
+                },
+                "param3": { 
+                    "inherited": false,
+                    "sensitive": false,
+                    "value": "val3",
+                    "description": "this is the param 3"                  
+                },
+                "param4": { 
+                    "inherited": true,
+                    "sensitive": false,
+                    "value": "val4",
+                    "description": "this is the param 4"                  
+                }
+            }
 
     }, {
         "id": "comp3",
@@ -51,10 +93,31 @@
             }
         },
         "parameters": {
-            "param1": "val1",
-            "param2": "val2",
-            "param3": "val3"
-        }
+                "param1": { 
+                    "inherited": true,
+                    "sensitive": true,
+                    "value": "val1",
+                    "description": "this is the param 1"                  
+                },
+                "param2": { 
+                    "inherited": false,
+                    "sensitive": true,
+                    "value": "val2",
+                    "description": "this is the param 2"                  
+                },
+                "param3": { 
+                    "inherited": false,
+                    "sensitive": false,
+                    "value": "val3",
+                    "description": "this is the param 3"                  
+                },
+                "param4": { 
+                    "inherited": true,
+                    "sensitive": false,
+                    "value": "val4",
+                    "description": "this is the param 4"                  
+                }
+            }
 
     }]
 }
