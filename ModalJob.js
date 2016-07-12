@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import {inheritedParametersProcessor} from './dataProcessor'
 import ReactTooltip from 'react-tooltip'
+import {ModalDialog} from 'react-modal-dialog';
 
 // const ModalJob2 = ({job, onSave}) => {
 //     var parameters = job.parameters;
@@ -73,14 +74,19 @@ class ModalJob extends React.Component {
         }
         
         return (
-            <div>
-                {job.name}
-                {activeRows}
-                Advanced:
-                {advancedRows}
+           <div>
+            <ModalDialog onClose={this.props.onClose}>
+                <div>
+                    {job.name}
+                    {activeRows}
+                    Advanced:
+                    {advancedRows}
+                    
+                    <button onClick={this.onClickSave}>save</button>
+                    
+                </div>
+                </ModalDialog>
                 {tooltips}
-                <button onClick={this.onClickSave}>save</button>
-                
             </div>
         );
     }

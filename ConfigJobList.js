@@ -77,9 +77,9 @@ class ConfigJobList extends React.Component {
         )}
         { this.state.isShowingModal && jobs.selectedModalJob ? 
           <ModalContainer onClose={this.closeModal}>
-            <ModalDialog onClose={this.closeModal}>
+
               <ModalJob job={jobs.selectedModalJob} onClose={this.closeModal} onSave={onSave}/>
-            </ModalDialog>
+
           </ModalContainer> : "" }
       </div>
       <button onClick={onClickPostData}>Save</button>
