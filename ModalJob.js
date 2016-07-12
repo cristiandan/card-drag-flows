@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import {inheritedParametersProcessor} from './dataProcessor'
+import ReactTooltip from 'react-tooltip'
 
 // const ModalJob2 = ({job, onSave}) => {
 //     var parameters = job.parameters;
@@ -49,11 +50,26 @@ class ModalJob extends React.Component {
         var job = this.props.job;
         var activeRows = [];
         var advancedRows = [];
+        var tooltips = [];
         for (const key in parameters.activeParams) {
-            activeRows.push(<div key={key}> {key} <input type='text' value ={parameters.activeParams[key].value} onChange={(event) => this.handleParameterChange(event,key)} /> </div>);
+            activeRows.push(<div key={key}> 
+                <span data-tip data-for={key}> {key} </span>
+                <input type='text' value ={parameters.activeParams[key].value} onChange={(event) => this.handleParameterChange(event,key)} /> 
+            </div>);
         }
         for (const key in parameters.inheritedParams) {
-            advancedRows.push(<div key={key}> {key} <input type='text' value ={parameters.inheritedParams[key].value} onChange={(event) => this.handleParameterChange(event,key)} /> </div>);
+            advancedRows.push(<div key={key}>
+                <span data-tip data-for={key}> {key} </span>
+                <input type='text' value ={parameters.inheritedParams[key].value} onChange={(event) => this.handleParameterChange(event,key)} /> 
+            </div>);
+        }
+
+        for (const key in this.state.attributes) {
+            tooltips.push(<div key={key}> 
+                <ReactTooltip place="bottom" type="dark" effect="float" id={key}>
+                    <span>{this.state.attributes[key].description}</span>
+                </ReactTooltip>
+            </div>);
         }
         
         return (
@@ -62,7 +78,9 @@ class ModalJob extends React.Component {
                 {activeRows}
                 Advanced:
                 {advancedRows}
+                {tooltips}
                 <button onClick={this.onClickSave}>save</button>
+                
             </div>
         );
     }
