@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 import {inheritedParametersProcessor} from './dataProcessor'
 import ReactTooltip from 'react-tooltip'
 import {ModalDialog} from 'react-modal-dialog';
+import Collapsible from './node_modules/react-collapsible/src/Collapsible';
 
 // const ModalJob2 = ({job, onSave}) => {
 //     var parameters = job.parameters;
@@ -79,9 +80,9 @@ class ModalJob extends React.Component {
                 <div>
                     {job.name}
                     {activeRows}
-                    Advanced:
-                    {advancedRows}
-                    
+                    <Collapsible triggerText="Advanced:">
+                        {advancedRows}
+                    </Collapsible>
                     <button onClick={this.onClickSave}>save</button>
                     
                 </div>
