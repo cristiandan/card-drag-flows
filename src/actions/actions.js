@@ -150,7 +150,7 @@ export function loadFlow(id) {
 export function loadFlowSuccess(flow) {
     flow.components.map(x => x.uuid = guid())
     return {
-        type: LOAD_FLOW,
+        type: LOAD_COMPONENTS_FROM_FLOW,
         flow
       };
 }

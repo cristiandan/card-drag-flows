@@ -3,7 +3,6 @@ import ImmutablePropTypes from 'react-immutable-proptypes'
 import Flow from './Flow'
 
 const FlowList = ({ flows, onClick }) => {
-    console.log('aa',flows.data.toJS());
     return (
       <div id="flowlist" className="container uk-grid uk-grid-small uk-grid-width-1-1 uk-vertical-align-middle uk-margin-bottom uk-scrollable-box" data-uk-grid-margin data-uk-observe>
         {flows.data.map(flow =>
