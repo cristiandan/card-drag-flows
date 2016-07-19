@@ -1,7 +1,6 @@
 import { ADD_CONFIGURED_JOB, MOVE_CONFIGURED_JOB, ADD_JOB, GET_JOBS_REQUEST, GET_JOBS_FAILURE, GET_JOBS_SUCCESS, GET_FLOWS_REQUEST, GET_FLOWS_FAILURE, GET_FLOWS_SUCCESS,LOAD_FLOW, SELECT_MODAL_JOB, UPDATE_CONFIGURED_JOB, POST_CONFIGURED_JOB_DATA_SUCCESS } from './actions'
 var Immutable = require('immutable');
 import { combineReducers } from 'redux'
-import { guid } from './utils'
 
 var defaultJobsList = Immutable.List([{name: "ab1",id:'32'},{name: "ab2",id:'21'}, {name:"ab3",id:'55'}]);
 var defaultConfiguredJobsList = Immutable.List();
