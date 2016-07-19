@@ -15,13 +15,13 @@ div.component-uuid {
     height: 50vh;
 }*/
 
-#joblist {
+#componentlist {
     max-height: 50vh;
     max-width: fit-content;
     min-width: 8vw;
 }
 
-#configuredjoblist {
+#configuredcomponentlist {
     min-height: 100%;
     min-width: 100%;
 }
