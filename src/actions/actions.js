@@ -24,6 +24,7 @@ export const ERROR_LOADING_FLOW = 'ERROR_LOADING_FLOW'
 export const SELECT_MODAL_COMPONENT = 'SELECT_MODAL_COMPONENT'
 export const UPDATE_CONFIGURED_COMPONENT = 'UPDATE_CONFIGURED_COMPONENT'
 export const POST_CONFIGURED_COMPONENT_DATA_SUCCESS = 'POST_CONFIGURED_COMPONENT_DATA_SUCCESS'
+export const POST_CONFIGURED_COMPONENT_DATA_REQUEST = 'POST_CONFIGURED_COMPONENT_REQUEST'
 
 /*
  * action creators
@@ -178,6 +179,9 @@ export function updateConfiguredComponent(componentUuid, attributes) {
 
 export function postConfiguredComponentData() {
   return (dispatch, getState) => {
+
+    dispatch(postConfiguredComponentDataRequest());
+
     const configuredFlowData = getState()
       .configuredComponents.data.toJS();
     if (configuredFlowData) {
@@ -189,6 +193,12 @@ export function postConfiguredComponentData() {
       //dispatch(Error());
     }
   };
+}
+
+export function postConfiguredComponentDataRequest() {
+  return {
+    type: POST_CONFIGURED_COMPONENT_DATA_REQUEST
+  }
 }
 
 export function postConfiguredComponentDataSuccess(data) {
