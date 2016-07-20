@@ -1,5 +1,5 @@
 {
-    "jobs": [{
+    "components": [{
         "id": "comp1",
         "configuration": {
             "scriptName": "component1.py",

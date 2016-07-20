@@ -93,7 +93,7 @@ export function fetchComponents() {
   return function(dispatch) {
     dispatch(getComponentsRequest());
 
-    return fetch('jobs.json')
+    return fetch('components.json')
       .then(response => response.json())
       .then(json =>
         dispatch(getComponentsSuccess(json))

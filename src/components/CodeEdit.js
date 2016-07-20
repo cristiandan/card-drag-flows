@@ -7,8 +7,5 @@ const CodeEdit = ({ postedData }) => {
     )
 }
 
-CodeEdit.propTypes = {
-  postedData: PropTypes.array.isRequired
-}
 
 export default CodeEdit;

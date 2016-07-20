@@ -7,7 +7,8 @@ function getEmptyConfiguredComponentsState() {
   return Object.assign({}, {
           isFetching: false,
           data: List(defaultConfiguredComponentsList),
-          selectedModalComponent: null
+          selectedModalComponent: null,
+          postedData: ""
         })
 }
 
