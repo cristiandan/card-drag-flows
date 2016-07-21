@@ -10,7 +10,7 @@ function  getEmptyRawDataState() {
   })
 }
 
-function rawDataReducer(state = getEmptyFlowsState(), action) {
+function rawDataReducer(state = getEmptyRawDataState(), action) {
     switch(action.type) {
       case POST_CONFIGURED_COMPONENT_DATA_REQUEST:
         return Object.assign({},state,{isFetching:true});

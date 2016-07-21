@@ -3,7 +3,7 @@ import CodeEdit from '../components/CodeEdit'
 
 const mapStateToProps = (state) => {
   return {
-    postedData: state.configuredComponents.postedData
+    rawData: state.rawJsonData
   }
 }
 

@@ -54,6 +54,7 @@ class ConfigComponentList extends React.Component {
     const onClickPostData = this.props.onClickPostData;
     const onMove = this.props.onMove;
     const onSave = this.props.onSave;
+    const edited = this.props.components.edited;
     return connectDropTarget (
       <div>
       <div id="configuredcomponentlist" style={{width:"100%", height:"100%"}} className="container uk-grid uk-grid-medium uk-grid-width-xlarge-1-6 uk-grid-width-large-1-5 uk-grid-width-medium-1-4 uk-grid-width-small-1-3 uk-vertical-align-middle" data-uk-grid-margin data-uk-observe>
@@ -67,7 +68,7 @@ class ConfigComponentList extends React.Component {
 
           </ModalContainer> : "" }
       </div>
-      <button onClick={onClickPostData}>Save</button>
+      <button onClick={onClickPostData} disabled={!edited}>Save</button>
         </div>
       )
   }
