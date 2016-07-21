@@ -25,6 +25,7 @@ export const SELECT_MODAL_COMPONENT = 'SELECT_MODAL_COMPONENT'
 export const UPDATE_CONFIGURED_COMPONENT = 'UPDATE_CONFIGURED_COMPONENT'
 export const POST_CONFIGURED_COMPONENT_DATA_SUCCESS = 'POST_CONFIGURED_COMPONENT_DATA_SUCCESS'
 export const POST_CONFIGURED_COMPONENT_DATA_REQUEST = 'POST_CONFIGURED_COMPONENT_REQUEST'
+export const CLEAR_FLOW = 'CLEAR_FLOW'
 
 /*
  * action creators
@@ -205,5 +206,11 @@ export function postConfiguredComponentDataSuccess(data) {
   return {
     type: POST_CONFIGURED_COMPONENT_DATA_SUCCESS,
     data
+  }
+}
+
+export function clearFlow() {
+  return {
+    type: CLEAR_FLOW
   }
 }

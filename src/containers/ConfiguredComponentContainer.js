@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { addConfiguredComponent, moveConfiguredComponent, selectModalComponent, postConfiguredComponentData, updateConfiguredComponent } from '../actions/actions'
+import { addConfiguredComponent, moveConfiguredComponent, selectModalComponent, postConfiguredComponentData, updateConfiguredComponent, clearFlow } from '../actions/actions'
 import ConfiguredComponentList from '../components/ConfiguredComponentList'
 
 const mapStateToProps = (state) => {
@@ -24,6 +24,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     onSave: (uuid, attributes) => {
       dispatch(updateConfiguredComponent(uuid,attributes));
+    },
+    onClear: () => {
+      dispatch(clearFlow());
     }
   }
 }
