@@ -1,5 +1,5 @@
 import { List } from 'immutable'
-import { ADD_CONFIGURED_COMPONENT, MOVE_CONFIGURED_COMPONENT, SELECT_MODAL_COMPONENT, UPDATE_CONFIGURED_COMPONENT, POST_CONFIGURED_COMPONENT_DATA_SUCCESS, LOAD_COMPONENTS_FROM_FLOW, CLEAR_FLOW } from '../actions/actions'
+import { ADD_CONFIGURED_COMPONENT, MOVE_CONFIGURED_COMPONENT, SELECT_MODAL_COMPONENT, UPDATE_CONFIGURED_COMPONENT, POST_CONFIGURED_COMPONENT_DATA_SUCCESS, LOAD_COMPONENTS_FROM_FLOW_REQUEST, LOAD_COMPONENTS_FROM_FLOW_SUCCESS, CLEAR_FLOW } from '../actions/actions'
 
 var defaultConfiguredComponentsList = List();
 
@@ -23,7 +23,7 @@ function configuredComponentsReducer(state = getEmptyConfiguredComponentsState()
         const newData = state.data.delete(action.fromIndex).insert(action.toIndex,selectedComponent);
 
         return Object.assign({},state, {data: newData, edited: true});
-      case LOAD_COMPONENTS_FROM_FLOW:
+      case LOAD_COMPONENTS_FROM_FLOW_SUCCESS:
         console.log(action.flow);
         return Object.assign({},state,{data: List(action.flow.components), edited: false});
       case SELECT_MODAL_COMPONENT:

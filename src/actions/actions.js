@@ -1,6 +1,7 @@
 import {
   componentsProcessor,
-  flowsProcessor
+  flowsProcessor,
+  flowProcessor
 } from '../processing/dataProcessor'
 
 import fetch from 'isomorphic-fetch'
@@ -19,7 +20,8 @@ export const GET_COMPONENTS_SUCCESS = 'GET_COMPONENTS_SUCCESS'
 export const GET_FLOWS_REQUEST = 'GET_FLOWS_REQUEST'
 export const GET_FLOWS_FAILURE = 'GET_FLOWS_FAILURE'
 export const GET_FLOWS_SUCCESS = 'GET_FLOWS_SUCCESS'
-export const LOAD_COMPONENTS_FROM_FLOW = 'LOAD_COMPONENTS_FROM_FLOW'
+export const LOAD_COMPONENTS_FROM_FLOW_REQUEST = 'LOAD_COMPONENTS_FROM_FLOW_REQUEST'
+export const LOAD_COMPONENTS_FROM_FLOW_SUCCESS = 'LOAD_COMPONENTS_FROM_FLOW_SUCCESS'
 export const ERROR_LOADING_FLOW = 'ERROR_LOADING_FLOW'
 export const SELECT_MODAL_COMPONENT = 'SELECT_MODAL_COMPONENT'
 export const UPDATE_CONFIGURED_COMPONENT = 'UPDATE_CONFIGURED_COMPONENT'
@@ -95,7 +97,7 @@ export function fetchComponents() {
   return function(dispatch) {
     dispatch(getComponentsRequest());
 
-    return fetch('components.json')
+    return fetch('json_mock_data/components.json')
       .then(response => response.json())
       .then(json =>
         dispatch(getComponentsSuccess(json))
@@ -127,7 +129,7 @@ export function fetchFlows() {
   return function(dispatch) {
     dispatch(getFlowsRequest());
 
-    return fetch('flows.json')
+    return fetch('json_mock_data/flows2.json')
       .then(response => response.json())
       .then(json =>
         dispatch(getFlowsSuccess(json))
@@ -141,7 +143,12 @@ export function loadFlow(id) {
     const flow = getState()
       .flows.data.filter(x => x.id == id).get(0);
     if (flow) {
-      dispatch(loadFlowSuccess(flow));
+      dispatch(loadFlowRequest())
+      return fetch('json_mock_data/flows.json')
+      .then(response => response.json())
+      .then(json =>
+        dispatch(loadFlowSuccess(json))
+      )
     }
     else {
       dispatch(loadFlowError());
@@ -149,17 +156,26 @@ export function loadFlow(id) {
   };
 }
 
+export function loadFlowRequest() {
+  return {
+        type: LOAD_COMPONENTS_FROM_FLOW_REQUEST
+      };
+}
+
 export function loadFlowSuccess(flow) {
+    flow = flowProcessor(flow);
     flow.components.map(x => x.uuid = guid())
+      
     return {
-        type: LOAD_COMPONENTS_FROM_FLOW,
+        type: LOAD_COMPONENTS_FROM_FLOW_SUCCESS,
         flow
       };
 }
 
-export function loadFlowError() {
+export function loadFlowError(error) {
   return {
-      type: ERROR_LOADING_FLOW
+      type: ERROR_LOADING_FLOW,
+      error
     }
 }
 

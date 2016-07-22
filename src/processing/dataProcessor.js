@@ -3,7 +3,7 @@ export function componentsProcessor(jsonData) {
 }
 
 export function flowsProcessor(jsonData) {
-        return jsonData.flows.map(flow => ({name: flow.name, id: flow.id, components: componentsProcessor({components:flow.components})}));
+        return jsonData.flows.map(flow => ({name: flow.name, id: flow.id}));
 }
 
 export function inheritedParametersProcessor(parameters) {
@@ -19,4 +19,8 @@ export function inheritedParametersProcessor(parameters) {
         }
 
         return {activeParams,inheritedParams}
+}
+
+export function flowProcessor(jsonData) {
+        return {name: jsonData.name, id: jsonData.id, components: componentsProcessor({components:jsonData.components})};
 }

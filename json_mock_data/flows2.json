@@ -1,0 +1,9 @@
+{
+    "flows": [{
+        "name": "flow1",
+        "id": "FL1324"
+    }, {
+        "name": "flow2",
+        "id": "FL1325"
+    }]
+}
