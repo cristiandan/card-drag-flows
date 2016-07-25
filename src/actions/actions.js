@@ -4,6 +4,8 @@ import {
   flowProcessor
 } from '../processing/dataProcessor'
 
+import { GET_COMPONENTS_ENDPOINT } from '../constants/endpoints'
+
 import fetch from 'isomorphic-fetch'
 import guid from '../utils/guid'
 
@@ -97,7 +99,7 @@ export function fetchComponents() {
   return function(dispatch) {
     dispatch(getComponentsRequest());
 
-    return fetch('json_mock_data/components.json')
+    return fetch(GET_COMPONENTS_ENDPOINT)
       .then(response => response.json())
       .then(json =>
         dispatch(getComponentsSuccess(json))
