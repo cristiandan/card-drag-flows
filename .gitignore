@@ -1,4 +1,8 @@
+# client ignored 
 node_modules/
 bin/
 typings/
 old/
+
+# server ignored
+*.pyc 
