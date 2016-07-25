@@ -6,7 +6,8 @@ import {
 
 import { 
   GET_COMPONENTS_ENDPOINT, 
-  GET_FLOWS_ENDPOINT 
+  GET_FLOWS_ENDPOINT,
+  GET_FLOW_ENDPOINT 
 } from '../constants/endpoints'
 
 import fetch from 'isomorphic-fetch'
@@ -149,7 +150,7 @@ export function loadFlow(id) {
       .flows.data.filter(x => x.id == id).get(0);
     if (flow) {
       dispatch(loadFlowRequest())
-      return fetch('json_mock_data/flows.json')
+      return fetch(GET_FLOW_ENDPOINT+"?id="+id)
       .then(response => response.json())
       .then(json =>
         dispatch(loadFlowSuccess(json))

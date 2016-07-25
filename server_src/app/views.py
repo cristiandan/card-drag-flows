@@ -149,7 +149,140 @@ def jobs():
         "id": "FL1325"
     }]
 	}
-	return json.jsonify(**jobsList);
+	return json.jsonify(**jobsList)
+
+@app.route('/job')
+def job():
+	jobId = request.args.get('id')
+	
+	jobContent = {
+		"name": "flowxy",
+        "id": jobId,
+        "components": [{
+            "id": "comp1",
+            "configuration": {
+                "scriptName": "component1.py",
+                "queues": {
+                    "in": ["queue0"],
+                    "out": ["queue1"]
+                },
+                "scaling": {
+                    "horizontal": 1,
+                    "vertical": 1
+                }
+            },
+            "parameters": {
+                "param1": { 
+                    "inherited": True,
+                    "sensitive": True,
+                    "value": "val1",
+                    "description": "this is the param 1"                  
+                },
+                "param2": { 
+                    "inherited": False,
+                    "sensitive": True,
+                    "value": "val2",
+                    "description": "this is the param 2"                  
+                },
+                "param3": { 
+                    "inherited": False,
+                    "sensitive": False,
+                    "value": "val3",
+                    "description": "this is the param 3"                  
+                },
+                "param4": { 
+                    "inherited": True,
+                    "sensitive": False,
+                    "value": "val4",
+                    "description": "this is the param 4"                  
+                }
+            }
+
+        }, {
+            "id": "comp2",
+            "configuration": {
+                "scriptName": "component2.py",
+                "queues": {
+                    "in": ["queue1"],
+                    "out": ["queue2"]
+                },
+                "scaling": {
+                    "horizontal": 1,
+                    "vertical": 1
+                }
+            },
+            "parameters": {
+                "param1": { 
+                    "inherited": True,
+                    "sensitive": True,
+                    "value": "val1",
+                    "description": "this is the param 1"                  
+                },
+                "param2": { 
+                    "inherited": False,
+                    "sensitive": True,
+                    "value": "val2",
+                    "description": "this is the param 2"                  
+                },
+                "param3": { 
+                    "inherited": False,
+                    "sensitive": False,
+                    "value": "val3",
+                    "description": "this is the param 3"                  
+                },
+                "param4": { 
+                    "inherited": True,
+                    "sensitive": False,
+                    "value": "val4",
+                    "description": "this is the param 4"                  
+                }
+            }
+
+        }, {
+            "id": "comp3",
+            "configuration": {
+                "scriptName": "component2.py",
+                "queues": {
+                    "in": ["queue2"],
+                    "out": ["queue3"]
+                },
+                "scaling": {
+                    "horizontal": 1,
+                    "vertical": 1
+                }
+            },
+            "parameters": {
+                "param1": { 
+                    "inherited": True,
+                    "sensitive": True,
+                    "value": "val1",
+                    "description": "this is the param 1"                  
+                },
+                "param2": { 
+                    "inherited": False,
+                    "sensitive": True,
+                    "value": "val2",
+                    "description": "this is the param 2"                  
+                },
+                "param3": { 
+                    "inherited": False,
+                    "sensitive": False,
+                    "value": "val3",
+                    "description": "this is the param 3"                  
+                },
+                "param4": { 
+                    "inherited": True,
+                    "sensitive": False,
+                    "value": "val4",
+                    "description": "this is the param 4"                  
+                }
+            }
+
+        }]
+	}
+	
+	return json.jsonify(**jobContent);
+	
 	
 @app.route('/scheme', methods=['GET', 'POST'])
 def scheme():
