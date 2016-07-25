@@ -137,6 +137,19 @@ def components():
 	}
 	
 	return json.jsonify(**componentsList);
+
+@app.route('/jobs')
+def jobs():
+	jobsList = {
+		"flows": [{
+        "name": "flow1",
+        "id": "FL1324"
+    }, {
+        "name": "flow2",
+        "id": "FL1325"
+    }]
+	}
+	return json.jsonify(**jobsList);
 	
 @app.route('/scheme', methods=['GET', 'POST'])
 def scheme():
