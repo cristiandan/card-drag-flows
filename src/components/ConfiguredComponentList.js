@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 import ConfiguredComponent from './ConfiguredComponent'
 import { DropTarget } from 'react-dnd';
-import * as ItemTypes from '../utils/Constants'
+import * as ItemTypes from '../constants/itemTypes'
 import {ModalContainer, ModalDialog} from 'react-modal-dialog';
 import ComponentModal from '../containers/ComponentModal'
 

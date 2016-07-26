@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import { DragSource, DropTarget } from 'react-dnd'
-import * as ItemTypes from '../utils/Constants'
+import * as ItemTypes from '../constants/itemTypes'
 import { findDOMNode } from 'react-dom'
 
 var componentSource = {
