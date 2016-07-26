@@ -291,6 +291,7 @@ def scheme():
 	#q2 = jsonify(requestData)
 	#test = dict(requestData)
 	#xmlData = json2xml(test)
+	print requestData
 	return str(requestData)
 
 @app.route('/bin/<path:filename>')

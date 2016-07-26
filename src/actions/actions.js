@@ -7,7 +7,8 @@ import {
 import { 
   GET_COMPONENTS_ENDPOINT, 
   GET_FLOWS_ENDPOINT,
-  GET_FLOW_ENDPOINT 
+  GET_FLOW_ENDPOINT ,
+  POST_FLOW_ENDPOINT
 } from '../constants/endpoints'
 
 import fetch from 'isomorphic-fetch'
@@ -186,7 +187,7 @@ export function loadFlowError(error) {
 }
 
 export function selectModalComponent(componentId) {
-  return{
+  return {
     type: SELECT_MODAL_COMPONENT,
     componentId
   }
@@ -209,8 +210,16 @@ export function postConfiguredComponentData() {
       .configuredComponents.data.toJS();
     if (configuredFlowData) {
       // post data here
-      console.log(configuredFlowData);
-      dispatch(postConfiguredComponentDataSuccess(configuredFlowData));
+      fetch(POST_FLOW_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({configuredFlowData})
+      })
+      .then(response => response.text())
+      .then(json => dispatch(postConfiguredComponentDataSuccess(json)))
     }
     else {
       //dispatch(Error());
