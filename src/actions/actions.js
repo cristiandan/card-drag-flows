@@ -208,6 +208,10 @@ export function postConfiguredComponentData() {
 
     const configuredFlowData = getState()
       .configuredComponents.data.toJS();
+    const schemaChanged = getState()
+      .configuredComponents.schemaChanged;
+    const schemaId = getState()
+      .configuredComponents.schemaId;
     if (configuredFlowData) {
       // post data here
       fetch(POST_FLOW_ENDPOINT, {
@@ -216,7 +220,7 @@ export function postConfiguredComponentData() {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({configuredFlowData})
+        body: JSON.stringify({flowData: configuredFlowData, schemaChanged, schemaId})
       })
       .then(response => response.text())
       .then(json => dispatch(postConfiguredComponentDataSuccess(json)))
