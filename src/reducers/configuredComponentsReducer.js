@@ -1,5 +1,5 @@
 import { List } from 'immutable'
-import { ADD_CONFIGURED_COMPONENT, MOVE_CONFIGURED_COMPONENT, SELECT_MODAL_COMPONENT, UPDATE_CONFIGURED_COMPONENT, POST_CONFIGURED_COMPONENT_DATA_SUCCESS, LOAD_COMPONENTS_FROM_FLOW_REQUEST, LOAD_COMPONENTS_FROM_FLOW_SUCCESS, CLEAR_FLOW } from '../actions/actions'
+import { ADD_CONFIGURED_COMPONENT, MOVE_CONFIGURED_COMPONENT, SELECT_MODAL_COMPONENT, UPDATE_CONFIGURED_COMPONENT, POST_CONFIGURED_COMPONENT_DATA_SUCCESS, LOAD_COMPONENTS_FROM_FLOW_REQUEST, LOAD_COMPONENTS_FROM_FLOW_SUCCESS, CLEAR_FLOW, FILE_NAME_CHANGE } from '../actions/actions'
 import guid from '../utils/guid'
 
 var defaultConfiguredComponentsList = List();
@@ -11,7 +11,8 @@ function getEmptyConfiguredComponentsState() {
           selectedModalComponent: null,
           edited: false,
           schemaChanged: false,
-          schemaId: guid()
+          schemaId: guid(),
+          filename: null
         })
 }
 
@@ -27,7 +28,6 @@ function configuredComponentsReducer(state = getEmptyConfiguredComponentsState()
 
         return Object.assign({},state, {data: newData, edited: true, schemaChanged: true});
       case LOAD_COMPONENTS_FROM_FLOW_SUCCESS:
-        console.log(action.flow);
         return Object.assign({},state,{data: List(action.flow.components), edited: false, schemaChanged: false, schemaId: action.flow.id});
       case SELECT_MODAL_COMPONENT:
         const selected = state.data.filter(x => x.uuid == action.componentId).get(0);
@@ -44,6 +44,9 @@ function configuredComponentsReducer(state = getEmptyConfiguredComponentsState()
       
       case CLEAR_FLOW:
         return getEmptyConfiguredComponentsState();
+
+      case FILE_NAME_CHANGE:
+         return Object.assign({},state,{filename: action.name});
 
       default:
         return state;

@@ -3,8 +3,9 @@ import ImmutablePropTypes from 'react-immutable-proptypes'
 import ConfiguredComponent from './ConfiguredComponent'
 import { DropTarget } from 'react-dnd';
 import * as ItemTypes from '../constants/itemTypes'
-import {ModalContainer, ModalDialog} from 'react-modal-dialog';
+import {ModalContainer, ModalDialog} from 'react-modal-dialog'
 import ComponentModal from '../containers/ComponentModal'
+import SaveModal from '../containers/SaveModal'
 
 var target = {
     
@@ -33,18 +34,27 @@ class ConfigComponentList extends React.Component {
     super(props);
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.closeSaveAsModal = this.closeSaveAsModal.bind(this);
+    this.onClickOpenSaveAsModal = this.onClickOpenSaveAsModal.bind(this);
     this.state = {isShowingModal:false, modalComponentId: null};
     this.props = props;
   }
 
   openModal (componentId) {
-    console.log("open modal",componentId);
     this.setState({isShowingModal: true, modalComponentId: componentId});
     this.props.onSelectModalComponent(componentId);
   }
 
   closeModal() {
     this.setState({isShowingModal:false});
+  }
+
+  closeSaveAsModal() {
+    this.setState({isShowingSaveAsModal:false});
+  }
+
+  onClickOpenSaveAsModal() {
+    this.setState({isShowingSaveAsModal:true});
   }
 
   render() {
@@ -56,6 +66,10 @@ class ConfigComponentList extends React.Component {
     const onSave = this.props.onSave;
     const edited = this.props.components.edited;
     const onClear = this.props.onClear;
+    const onClickOpenSaveAsModal = this.onClickOpenSaveAsModal;
+    const closeSaveAsModal =this.closeSaveAsModal;
+    const onSaveAsName = this.props.onSaveAsName;
+
     return connectDropTarget (
       <div>
       <div id="configuredcomponentlist" style={{width:"100%", height:"100%"}} className="container uk-grid uk-grid-medium uk-grid-width-xlarge-1-6 uk-grid-width-large-1-5 uk-grid-width-medium-1-4 uk-grid-width-small-1-3 uk-vertical-align-middle" data-uk-grid-margin data-uk-observe>
@@ -69,7 +83,13 @@ class ConfigComponentList extends React.Component {
 
           </ModalContainer> : "" }
       </div>
+      <br/><br/>
       <button onClick={onClickPostData} disabled={!edited}>Save</button>
+      <button onClick={onClickOpenSaveAsModal} disabled={!edited}> Save As </button>
+      { this.state.isShowingSaveAsModal ?
+      <ModalContainer onClose={this.closeSaveAsModal}>
+        <SaveModal onClose={this.closeSaveAsModal} onSave={onSaveAsName}></SaveModal>
+      </ModalContainer>: "" }
       <button onClick={onClear}>Clear</button>
         </div>
       )

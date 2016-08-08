@@ -66,7 +66,7 @@ class ComponentModal extends React.Component {
                     <Collapsible triggerText="Advanced:">
                         {advancedRows}
                     </Collapsible>
-                    <button onClick={this.onClickSave}>save</button>
+                    <button onClick={this.onClickSave}>Save</button>
                     
                 </div>
                 </ModalDialog>

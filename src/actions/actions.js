@@ -35,6 +35,7 @@ export const UPDATE_CONFIGURED_COMPONENT = 'UPDATE_CONFIGURED_COMPONENT'
 export const POST_CONFIGURED_COMPONENT_DATA_SUCCESS = 'POST_CONFIGURED_COMPONENT_DATA_SUCCESS'
 export const POST_CONFIGURED_COMPONENT_DATA_REQUEST = 'POST_CONFIGURED_COMPONENT_REQUEST'
 export const CLEAR_FLOW = 'CLEAR_FLOW'
+export const FILE_NAME_CHANGE = 'FILE_NAME_CHANGE'
 
 /*
  * action creators
@@ -212,6 +213,8 @@ export function postConfiguredComponentData() {
       .configuredComponents.schemaChanged;
     const schemaId = getState()
       .configuredComponents.schemaId;
+    const filename = getState()
+      .configuredComponents.filename;
     if (configuredFlowData) {
       // post data here
       fetch(POST_FLOW_ENDPOINT, {
@@ -220,7 +223,7 @@ export function postConfiguredComponentData() {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({flowData: configuredFlowData, schemaChanged, schemaId})
+        body: JSON.stringify({flowData: configuredFlowData, schemaChanged, schemaId, filename})
       })
       .then(response => response.text())
       .then(json => dispatch(postConfiguredComponentDataSuccess(json)))
@@ -247,5 +250,24 @@ export function postConfiguredComponentDataSuccess(data) {
 export function clearFlow() {
   return {
     type: CLEAR_FLOW
+  }
+}
+
+export function changeFileNameRequest(name) {
+
+  return (dispatch, getState) => {
+
+    dispatch(changeFileName(name));
+    dispatch(postConfiguredComponentData());
+    
+  };
+
+  
+}
+
+export function changeFileName(name) {
+    return {
+    type: FILE_NAME_CHANGE,
+    name
   }
 }

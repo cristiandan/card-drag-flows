@@ -7,7 +7,6 @@ export function flowsProcessor(jsonData) {
 }
 
 export function inheritedParametersProcessor(parameters) {
-        console.log(parameters);
         var activeParams = {}
         var inheritedParams = {}
 
