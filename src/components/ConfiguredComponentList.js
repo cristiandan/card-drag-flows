@@ -6,6 +6,7 @@ import * as ItemTypes from '../constants/itemTypes'
 import {ModalContainer, ModalDialog} from 'react-modal-dialog'
 import ComponentModal from '../containers/ComponentModal'
 import SaveModal from '../containers/SaveModal'
+import DialogModal from '../containers/DialogModal'
 
 var target = {
     
