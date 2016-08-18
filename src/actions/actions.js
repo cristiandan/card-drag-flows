@@ -4,10 +4,10 @@ import {
   flowProcessor
 } from '../processing/dataProcessor'
 
-import { 
-  GET_COMPONENTS_ENDPOINT, 
+import {
+  GET_COMPONENTS_ENDPOINT,
   GET_FLOWS_ENDPOINT,
-  GET_FLOW_ENDPOINT ,
+  GET_FLOW_ENDPOINT,
   POST_FLOW_ENDPOINT
 } from '../constants/endpoints'
 
@@ -36,6 +36,8 @@ export const POST_CONFIGURED_COMPONENT_DATA_SUCCESS = 'POST_CONFIGURED_COMPONENT
 export const POST_CONFIGURED_COMPONENT_DATA_REQUEST = 'POST_CONFIGURED_COMPONENT_REQUEST'
 export const CLEAR_FLOW = 'CLEAR_FLOW'
 export const FILE_NAME_CHANGE = 'FILE_NAME_CHANGE'
+export const SHOW_MODAL = 'SHOW_MODAL'
+export const HIDE_MODAL = 'HIDE_MODAL'
 
 /*
  * action creators
@@ -61,10 +63,11 @@ export function addConfiguredComponent(componentId) {
     const component = getState()
       .components.data.filter(x => x.id == componentId).get(0);
     if (component) {
-      const newComponent = Object.assign({}, component, {uuid: guid()})
+      const newComponent = Object.assign({}, component, {
+        uuid: guid()
+      })
       dispatch(addConfiguredComponentSuccess(newComponent));
-    }
-    else {
+    } else {
       dispatch(addConfiguredComponentError());
     }
   };
@@ -78,7 +81,7 @@ export function addConfiguredComponentSuccess(component) {
 }
 
 export function addConfiguredComponentError() {
-  
+
 }
 
 export function getComponentsRequest() {
@@ -147,44 +150,53 @@ export function fetchFlows() {
 
 export function loadFlow(id) {
 
-  return (dispatch, getState) => {
+  const continueFunction = (dispatch, getState) => {
     const flow = getState()
       .flows.data.filter(x => x.id == id).get(0);
     if (flow) {
       dispatch(loadFlowRequest())
-      return fetch(GET_FLOW_ENDPOINT+"?id="+id)
-      .then(response => response.json())
-      .then(json =>
-        dispatch(loadFlowSuccess(json))
-      )
-    }
-    else {
+      return fetch(GET_FLOW_ENDPOINT + "?id=" + id)
+        .then(response => response.json())
+        .then(json =>
+          dispatch(loadFlowSuccess(json))
+        )
+    } else {
       dispatch(loadFlowError());
     }
   };
+
+  return (dispatch, getState) => {
+
+    console.log("asde");
+    
+    dispatch(() => showModal(() => { return continueFunction(dispatch,getState)},"DialogModal"));
+    
+  }
+
+
 }
 
 export function loadFlowRequest() {
   return {
-        type: LOAD_COMPONENTS_FROM_FLOW_REQUEST
-      };
+    type: LOAD_COMPONENTS_FROM_FLOW_REQUEST
+  };
 }
 
 export function loadFlowSuccess(flow) {
-    flow = flowProcessor(flow);
-    flow.components.map(x => x.uuid = guid())
-      
-    return {
-        type: LOAD_COMPONENTS_FROM_FLOW_SUCCESS,
-        flow
-      };
+  flow = flowProcessor(flow);
+  flow.components.map(x => x.uuid = guid())
+
+  return {
+    type: LOAD_COMPONENTS_FROM_FLOW_SUCCESS,
+    flow
+  };
 }
 
 export function loadFlowError(error) {
   return {
-      type: ERROR_LOADING_FLOW,
-      error
-    }
+    type: ERROR_LOADING_FLOW,
+    error
+  }
 }
 
 export function selectModalComponent(componentId) {
@@ -218,17 +230,21 @@ export function postConfiguredComponentData() {
     if (configuredFlowData) {
       // post data here
       fetch(POST_FLOW_ENDPOINT, {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({flowData: configuredFlowData, schemaChanged, schemaId, filename})
-      })
-      .then(response => response.text())
-      .then(json => dispatch(postConfiguredComponentDataSuccess(json)))
-    }
-    else {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            flowData: configuredFlowData,
+            schemaChanged,
+            schemaId,
+            filename
+          })
+        })
+        .then(response => response.text())
+        .then(json => dispatch(postConfiguredComponentDataSuccess(json)))
+    } else {
       //dispatch(Error());
     }
   };
@@ -259,15 +275,32 @@ export function changeFileNameRequest(name) {
 
     dispatch(changeFileName(name));
     dispatch(postConfiguredComponentData());
-    
+
   };
 
-  
+
 }
 
 export function changeFileName(name) {
-    return {
+  return {
     type: FILE_NAME_CHANGE,
     name
+  }
+}
+
+export function showModal(continueFunction, modalType) {
+  console.log("shjow")
+  return {
+    type: SHOW_MODAL,
+    modalType,
+    modalProps: {
+      continueFunction
+    }
+  }
+}
+
+export function hideModal() {
+  return {
+    type: HIDE_MODAL
   }
 }

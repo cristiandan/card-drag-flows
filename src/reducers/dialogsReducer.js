@@ -1,18 +1,23 @@
-import { a } from '../actions/actions'
+import { SHOW_MODAL, HIDE_MODAL } from '../actions/actions'
 
 function  getEmptyDialogsState() {
   return Object.assign({}, {
           isShowing: false,
-          continueFunction: () => {}
+          modalType: null,
+          modalProps: {}
   })
 }
 
 function dialogsReducer(state = getEmptyDialogsState(), action) {
     switch(action.type) {
-      case POST_CONFIGURED_COMPONENT_DATA_REQUEST:
-        return Object.assign({},state,{isFetching:true});
-      case POST_CONFIGURED_COMPONENT_DATA_SUCCESS: //edit when use post
-        return Object.assign({},state, {data: action.data, isFetching:false});
+      case SHOW_MODAL:
+      console.log('asdq1');
+        return {
+          modalType: action.modalType,
+          modalProps: action.modalProps
+        }
+      case HIDE_MODAL:
+        return getEmptyDialogsState();
       default:
         return state;
     }

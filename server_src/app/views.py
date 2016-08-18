@@ -142,10 +142,10 @@ def components():
 def jobs():
 	jobsList = {
 		"flows": [{
-        "name": "flow1",
+        "name": "job1",
         "id": "FL1324"
     }, {
-        "name": "flow2",
+        "name": "job2",
         "id": "FL1325"
     }]
 	}
