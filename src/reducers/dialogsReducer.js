@@ -9,9 +9,9 @@ function  getEmptyDialogsState() {
 }
 
 function dialogsReducer(state = getEmptyDialogsState(), action) {
+  console.log('action',action);
     switch(action.type) {
       case SHOW_MODAL:
-      console.log('asdq1');
         return {
           modalType: action.modalType,
           modalProps: action.modalProps

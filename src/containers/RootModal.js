@@ -1,9 +1,11 @@
 //import DeletePostModal from './DeletePostModal'
 //import ConfirmLogoutModal from './ConfirmLogoutModal'
+import DialogModal from './DialogModal'
+import { connect } from 'react-redux'
+import React from 'react'
 
 const MODAL_COMPONENTS = {
-  'DELETE_POST': DeletePostModal,
-  'CONFIRM': ConfirmLogoutModal,
+  'DialogModal': DialogModal,
 }
 
 const ModalRoot = ({ modalType, modalProps }) => {

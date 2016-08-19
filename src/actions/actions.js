@@ -153,11 +153,12 @@ export function loadFlow(id) {
   const continueFunction = (dispatch, getState) => {
     const flow = getState()
       .flows.data.filter(x => x.id == id).get(0);
+    dispatch(hideModal())
     if (flow) {
       dispatch(loadFlowRequest())
       return fetch(GET_FLOW_ENDPOINT + "?id=" + id)
         .then(response => response.json())
-        .then(json =>
+        .then(json => 
           dispatch(loadFlowSuccess(json))
         )
     } else {
@@ -167,12 +168,13 @@ export function loadFlow(id) {
 
   return (dispatch, getState) => {
 
-    console.log("asde");
-    
-    dispatch(() => showModal(() => { return continueFunction(dispatch,getState)},"DialogModal"));
-    
+    const empty = getState()
+      .configuredComponents.data.isEmpty();
+    if(!empty)
+      dispatch(showModal(() => { return continueFunction(dispatch,getState)}, () => { return dispatch(hideModal()) }, "DialogModal"));
+    else
+       continueFunction(dispatch,getState);
   }
-
 
 }
 
@@ -264,6 +266,21 @@ export function postConfiguredComponentDataSuccess(data) {
 }
 
 export function clearFlow() {
+
+const continueFunction = (dispatch, getState) => {
+    dispatch(clearFlowAllowed());
+    dispatch(hideModal());
+}
+
+  return function(dispatch, getState) {
+    const empty = getState()
+      .configuredComponents.data.isEmpty();
+    if(!empty)
+      dispatch(showModal(() => { return continueFunction(dispatch,getState)}, () => { return dispatch(hideModal()) }, "DialogModal"));
+  }
+}
+
+export function clearFlowAllowed() {
   return {
     type: CLEAR_FLOW
   }
@@ -288,18 +305,19 @@ export function changeFileName(name) {
   }
 }
 
-export function showModal(continueFunction, modalType) {
-  console.log("shjow")
+export function showModal(continueFunction, cancelFunction, modalType) {
   return {
     type: SHOW_MODAL,
     modalType,
     modalProps: {
-      continueFunction
+      continueFunction,
+      onClose: cancelFunction
     }
   }
 }
 
 export function hideModal() {
+  console.log('hide modal');
   return {
     type: HIDE_MODAL
   }

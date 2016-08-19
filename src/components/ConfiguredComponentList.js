@@ -6,7 +6,7 @@ import * as ItemTypes from '../constants/itemTypes'
 import {ModalContainer, ModalDialog} from 'react-modal-dialog'
 import ComponentModal from '../containers/ComponentModal'
 import SaveModal from '../containers/SaveModal'
-import DialogModal from '../containers/DialogModal'
+import RootModal from '../containers/RootModal'
 
 var target = {
     
@@ -87,12 +87,13 @@ class ConfigComponentList extends React.Component {
       <br/><br/>
       <button onClick={onClickPostData} disabled={!edited}>Save</button>
       <button onClick={onClickOpenSaveAsModal} disabled={!edited}> Save As </button>
-      { this.state.isShowingSaveAsModal ?
-      <ModalContainer onClose={this.closeSaveAsModal}>
-        <SaveModal onClose={this.closeSaveAsModal} onSave={onSaveAsName}></SaveModal>
-      </ModalContainer>: "" }
-      <button onClick={onClear}>Clear</button>
-        </div>
+        { this.state.isShowingSaveAsModal ?
+        <ModalContainer onClose={this.closeSaveAsModal}>
+          <SaveModal onClose={this.closeSaveAsModal} onSave={onSaveAsName}></SaveModal>
+        </ModalContainer>: "" }
+        <button onClick={onClear}>Clear</button>
+        <RootModal/>
+      </div>
       )
   }
 }
